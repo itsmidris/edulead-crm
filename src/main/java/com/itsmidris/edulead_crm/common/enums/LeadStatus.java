@@ -7,7 +7,7 @@ public enum LeadStatus {
 
     CONTACTED,
 
-    CALLBACK,
+    FOLLOW_UP,
 
     COUNSELING_REQUIRED,
 
@@ -16,8 +16,6 @@ public enum LeadStatus {
     ADMISSION_COMPLETED,
 
     NOT_INTERESTED,
-
-    INVALID_NUMBER,
 
     LOST
 }
