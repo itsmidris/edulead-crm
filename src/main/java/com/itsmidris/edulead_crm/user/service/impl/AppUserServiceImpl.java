@@ -67,6 +67,13 @@ public class AppUserServiceImpl implements AppUserService {
 
     @Override
     public void disableUser(Long id) {
-        throw new UnsupportedOperationException("Not Implemented Yet. Contact Developer");
+//        throw new UnsupportedOperationException("Not Implemented Yet. Contact Developer");
+
+        AppUser appUser = appUserRepository.findById(id)
+                .orElseThrow(()-> new ResourceNotFoundException("User not found with id: " + id));
+
+        appUser.setEnabled(false);
+
+        appUserRepository.save(appUser);
     }
 }

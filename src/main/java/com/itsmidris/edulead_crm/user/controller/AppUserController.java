@@ -59,4 +59,13 @@ public class AppUserController {
 
         return ResponseEntity.ok(ResponseBuilder.success("Users fetched successfully",users));
     }
+
+    @PatchMapping("/{id}/disable")
+    public ResponseEntity<ApiResponse<Void>> disableUser(@PathVariable Long id) {
+
+        appUserService.disableUser(id);
+
+        return ResponseEntity.ok(ResponseBuilder.success("User disabled Successfully",null));
+
+    }
 }
