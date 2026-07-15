@@ -1,6 +1,7 @@
 package com.itsmidris.edulead_crm.user.controller;
 
 import com.itsmidris.edulead_crm.common.payload.ApiResponse;
+import com.itsmidris.edulead_crm.common.util.ResponseBuilder;
 import com.itsmidris.edulead_crm.user.dto.request.CreateUserRequest;
 import com.itsmidris.edulead_crm.user.dto.response.UserResponse;
 import com.itsmidris.edulead_crm.user.service.AppUserService;
@@ -9,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/users")
@@ -47,5 +50,13 @@ public class AppUserController {
                 .build();
 
         return ResponseEntity.ok(apiResponse);
+    }
+
+    @GetMapping
+    public ResponseEntity<ApiResponse<List<UserResponse>>> getAllUsers() {
+
+        List<UserResponse> users = appUserService.getAllUsers();
+
+        return ResponseEntity.ok(ResponseBuilder.success("Users fetched successfully",users));
     }
 }
