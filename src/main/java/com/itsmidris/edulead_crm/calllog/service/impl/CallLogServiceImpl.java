@@ -1,8 +1,11 @@
 package com.itsmidris.edulead_crm.calllog.service.impl;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
+import com.itsmidris.edulead_crm.common.enums.CallOutcome;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -79,9 +82,7 @@ public class CallLogServiceImpl implements CallLogService {
                 .toList();
     }
 
-    private void updateLeadAfterCall(
-            Lead lead,
-            CreateCallLogRequest request) {
+    private void updateLeadAfterCall(Lead lead, CreateCallLogRequest request) {
 
         switch (request.getCallOutcome()) {
 
@@ -116,5 +117,41 @@ public class CallLogServiceImpl implements CallLogService {
                 // Keep current lead status unchanged.
             }
         }
+    }
+
+    @Override
+    public List<CallLogResponse> getCallerCallHistory(Long callerId) {
+
+        AppUser caller = appUserRepository.findById(callerId)
+                .orElseThrow( ()->new ResourceNotFoundException("Caller not found"));
+
+        return callLogRepository.findByCallerOrderByCallDateTimeDesc(caller)
+                .stream().map(callLogMapper::toResponse).toList();
+    }
+
+    @Override
+    public List<CallLogResponse> getTodayCallLogs() {
+
+        LocalDate today = LocalDate.now();
+        LocalDateTime start = today.atStartOfDay();
+        LocalDateTime end = today.atTime(LocalTime.MAX);
+
+        return callLogRepository
+                .findByCallDateTimeBetweenOrderByCallDateTimeDesc(start,end)
+                .stream().map(callLogMapper::toResponse).toList();
+    }
+
+    @Override
+    public List<CallLogResponse> getCallLogsBetween(LocalDate startDate, LocalDate endDate) {
+        return callLogRepository
+                .findByCallDateTimeBetweenOrderByCallDateTimeDesc(startDate.atStartOfDay(),endDate.atTime(LocalTime.MAX))
+                .stream().map(callLogMapper::toResponse).toList();
+    }
+
+    @Override
+    public List<CallLogResponse> getCallLogsByOutcome(CallOutcome callOutcome) {
+        return callLogRepository
+                .findByCallOutcomeOrderByCallDateTimeDesc(callOutcome)
+                .stream().map(callLogMapper::toResponse).toList();
     }
 }
