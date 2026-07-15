@@ -19,4 +19,5 @@ public interface LeadRepository extends JpaRepository<Lead, Long> {
 
     List<Lead> findByActiveTrue();
 
+    Optional<Lead> findTopByReferenceCodeStartingWithOrderByReferenceCodeDesc(String prefix);
 }
