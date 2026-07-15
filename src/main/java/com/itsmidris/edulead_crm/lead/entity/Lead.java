@@ -77,9 +77,6 @@ public class Lead extends BaseEntity {
     @Column(nullable = false)
     private boolean counselingRequired = false;
 
-    @Column(length = 1000)
-    private String remark;
-
     @Column(nullable = false)
     private boolean active = true;
 }
