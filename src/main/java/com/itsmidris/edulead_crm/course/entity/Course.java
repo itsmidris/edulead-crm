@@ -19,7 +19,7 @@ public class Course extends BaseEntity {
     private String courseName;
 
     @Column(nullable = false)
-    private Integer durationInYears;
+    private Integer duration;
 
     @Column(length = 500)
     private String description;
