@@ -12,13 +12,13 @@ import java.time.LocalDate;
 @Setter
 public class CreateCallLogRequest {
 
-    @NotNull
+    @NotNull(message = "Lead Id is required.")
     private Long leadId;
 
-    @NotNull
+    @NotNull(message = "Caller Id is required.")
     private Long callerId;
 
-    @NotNull
+    @NotNull(message = "Call outcome is required.")
     private CallOutcome callOutcome;
 
     private Integer durationInSeconds;
