@@ -22,8 +22,4 @@ public interface AppUserMapper {
             expression = "java(appUser.getFirstName() + \" \" + appUser.getLastName())")
     UserSummaryResponse toSummaryResponse(AppUser appUser);
 
-    @Mapping(target = "id", ignore = true)
-    @Mapping(target = "createdAt", ignore = true)
-    @Mapping(target = "updatedAt", ignore = true)
-    AppUser updateEntity(UpdateUserRequest request);
 }
