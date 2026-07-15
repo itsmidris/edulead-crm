@@ -56,7 +56,8 @@ public class AppUserServiceImpl implements AppUserService {
 
     @Override
     public List<UserResponse> getAllUsers() {
-        throw new UnsupportedOperationException("Not Implemented Yet. Contact Developer");
+//        throw new UnsupportedOperationException("Not Implemented Yet. Contact Developer");
+        return appUserRepository.findAll().stream().map(appUserMapper::toResponse).toList();
     }
 
     @Override
