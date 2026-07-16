@@ -1,5 +1,6 @@
 package com.itsmidris.edulead_crm.lead.repository;
 
+import com.itsmidris.edulead_crm.common.enums.LeadStatus;
 import com.itsmidris.edulead_crm.lead.entity.Lead;
 import com.itsmidris.edulead_crm.user.entity.AppUser;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -20,4 +21,10 @@ public interface LeadRepository extends JpaRepository<Lead, Long> {
     List<Lead> findByActiveTrue();
 
     Optional<Lead> findTopByReferenceCodeStartingWithOrderByReferenceCodeDesc(String prefix);
+
+    long countByActiveTrue();
+
+    long countByLeadStatus(LeadStatus leadStatus);
+
+    long countByLeadStatusAndActiveTrue(LeadStatus leadStatus);
 }

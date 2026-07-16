@@ -17,4 +17,6 @@ public interface CallLogRepository extends JpaRepository<CallLog, Long> {
     List<CallLog> findByCallDateTimeBetweenOrderByCallDateTimeDesc(LocalDateTime start, LocalDateTime end);
 
     List<CallLog> findByCallOutcomeOrderByCallDateTimeDesc(CallOutcome callOutcome);
+
+    long countByCallDateTimeBetween(LocalDateTime start, LocalDateTime end);
 }
