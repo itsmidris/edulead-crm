@@ -1,6 +1,7 @@
 package com.itsmidris.edulead_crm.calllog.dto.request;
 
 import com.itsmidris.edulead_crm.common.enums.CallOutcome;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
