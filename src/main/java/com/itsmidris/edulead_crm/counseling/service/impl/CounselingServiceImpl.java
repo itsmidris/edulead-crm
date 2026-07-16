@@ -17,7 +17,7 @@ import com.itsmidris.edulead_crm.lead.entity.Lead;
 import com.itsmidris.edulead_crm.lead.repository.LeadRepository;
 import com.itsmidris.edulead_crm.user.entity.AppUser;
 import com.itsmidris.edulead_crm.user.repository.AppUserRepository;
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;

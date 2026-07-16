@@ -61,7 +61,7 @@ public class Counseling extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private CounselingOutcome counselingOutcome;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private LocalDateTime scheduledDateTime;
 
     private LocalDateTime completedDateTime;

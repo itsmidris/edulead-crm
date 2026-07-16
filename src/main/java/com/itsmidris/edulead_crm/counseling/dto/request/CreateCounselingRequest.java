@@ -23,9 +23,9 @@ public class CreateCounselingRequest {
     @NotNull(message = "Counseling mode is required.")
     private CounselingMode counselingMode;
 
-    @NotNull(message = "Scheduled date & time is required.")
-    @Future(message = "Scheduled date must be in the future.")
-    private LocalDateTime scheduledDateTime;
+//    @NotNull(message = "Scheduled date & time is required.")
+//    @Future(message = "Scheduled date must be in the future.")
+//    private LocalDateTime scheduledDateTime;
 
     @NotBlank(message = "Request reason is required.")
     private String requestReason;

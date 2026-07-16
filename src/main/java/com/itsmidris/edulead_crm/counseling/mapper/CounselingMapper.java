@@ -15,6 +15,7 @@ public interface CounselingMapper {
     @Mapping(target = "lead", ignore = true)
     @Mapping(target = "requestedBy", ignore = true)
     @Mapping(target = "assignedCounselor", ignore = true)
+    @Mapping(target = "scheduledDateTime", ignore = true)
     @Mapping(target = "counselingStatus", ignore = true)
     @Mapping(target = "counselingOutcome", ignore = true)
     @Mapping(target = "completedDateTime", ignore = true)
@@ -27,6 +28,8 @@ public interface CounselingMapper {
     @Mapping(target = "leadReference", source = "lead.referenceCode")
 
     @Mapping(target = "studentName", expression = "java(counseling.getLead().getFirstName() + \" \" + counseling.getLead().getLastName())")
+
+    @Mapping(target = "leadPhoneNumber", source = "lead.studentPhone")
 
     @Mapping(target = "requestedById", source = "requestedBy.id")
 
