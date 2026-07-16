@@ -18,12 +18,14 @@ import com.itsmidris.edulead_crm.lead.repository.LeadRepository;
 import com.itsmidris.edulead_crm.user.entity.AppUser;
 import com.itsmidris.edulead_crm.user.repository.AppUserRepository;
 import jakarta.transaction.Transactional;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
+@Service
 public class CounselingServiceImpl implements CounselingService {
 
     private final CounselingRepository counselingRepository;
