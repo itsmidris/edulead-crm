@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Lead Management</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet"
+          th:href="@{/css/style.css}">
+
+</head>
+
+<body>
+
+<div th:replace="~{fragments/header :: header}"></div>
+
+<div class="d-flex">
+
+    <div th:replace="~{fragments/sidebar :: sidebar}"></div>
+
+    <div class="container-fluid p-4">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+
+            <h2>Lead Management</h2>
+
+            <button class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i>
+                Add Lead
+            </button>
+
+        </div>
+
+        <table class="table table-hover table-bordered align-middle">
+
+            <thead class="table-dark">
+            <tr>
+                <th>Ref</th>
+                <th>Student</th>
+                <th>Phone</th>
+                <th>Course</th>
+                <th>Caller</th>
+                <th>Status</th>
+                <th>Next Follow-up</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+
+            <tbody>
+
+            <tr th:each="lead : ${leads}">
+
+                <td th:text="${lead.id}"></td>
+
+                <td>
+                    <span th:text="${lead.firstName}"></span>
+                    <span th:text="${lead.lastName}"></span>
+                </td>
+
+                <td th:text="${lead.studentPhone}"></td>
+
+                <td><span class="badge bg-success" th:text="${lead.leadStatus}"></span></td>
+
+                <td>
+
+                    <button class="btn btn-sm btn-warning">
+
+                        <i class="bi bi-pencil-square"></i>
+
+                    </button>
+
+                    <button class="btn btn-sm btn-info text-white">
+
+                        <i class="bi bi-eye"></i>
+
+                    </button>
+
+                    <button class="btn btn-sm btn-danger">
+
+                        <i class="bi bi-trash"></i>
+
+                    </button>
+
+                </td>
+
+            </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+</body>
+
+</html>
