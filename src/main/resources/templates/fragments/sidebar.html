@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<div class="bg-light border-end vh-100 p-3"
+     style="width:250px;"
+     th:fragment="sidebar">
+
+    <h5>Navigation</h5>
+
+    <hr>
+
+    <ul class="nav flex-column">
+
+        <li class="nav-item mb-2">
+            <a class="nav-link" href="/">🏠 Dashboard</a>
+        </li>
+
+        <li class="nav-item mb-2">
+            <a class="nav-link" href="/leads">👨‍🎓 Leads</a>
+        </li>
+
+        <li class="nav-item mb-2">
+            <a class="nav-link" href="/courses">📚 Courses</a>
+        </li>
+
+        <li class="nav-item mb-2">
+            <a class="nav-link" href="/counselors">👨‍🏫 Counselors</a>
+        </li>
+
+        <li class="nav-item mb-2">
+            <a class="nav-link" href="/followups">📅 Follow-ups</a>
+        </li>
+
+        <li class="nav-item mb-2">
+            <a class="nav-link" href="/calllogs">📞 Call Logs</a>
+        </li>
+
+    </ul>
+
+</div>
+
+</body>
+</html>
