@@ -34,19 +34,82 @@
         <div class="row">
 
             <div class="col-md-3">
-                <div class="card">
+                <div class="card dashboard-card total-card shadow-sm">
                     <div class="card-body">
-                        <h5>Total Leads</h5>
-                        <h2 th:text="${leadCount}"></h2>
+                        <h5><i class="bi bi-people-fill"></i>Total Leads</h5>
+                        <h2 th:text="${dashboard.totalLeads}"></h2>
                     </div>
                 </div>
             </div>
-
             <div class="col-md-3">
-                <div class="card">
+                <div class="card dashboard-card active-card shadow-sm">
                     <div class="card-body">
-                        <h5>Courses</h5>
-                        <h2>12</h2>
+                        <h5><i class="bi bi-person-check-fill"></i>>Active Leads</h5>
+                        <h2 th:text="${dashboard.activeLeads}">0</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card dashboard-card new-card shadow-sm">
+                    <div class="card-body">
+                        <h5><i class="bi bi-person-plus-fill"></i>New Leads</h5>
+                        <h2 th:text="${dashboard.newLeads}">0</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card dashboard-card contacted-card shadow-sm">
+                    <div class="card-body">
+                        <h5><i class="bi bi-telephone-fill"></i>Contacted Leads</h5>
+                        <h2 th:text="${dashboard.contactedLeads}">0</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card dashboard-card followup-card shadow-sm">
+                    <div class="card-body">
+                        <h5><i class="bi bi-calendar-check-fill"></i>Follow-Up Leads</h5>
+                        <h2 th:text="${dashboard.followUpLeads}">0</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card dashboard-card counseling-card shadow-sm">
+                    <div class="card-body">
+                        <h5><i class="bi bi-chat-left-text-fill"></i>Counseling Leads</h5>
+                        <h2 th:text="${dashboard.counselingRequiredLeads}">0</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card dashboard-card admission-card shadow-sm">
+                    <div class="card-body">
+                        <h5><i class="bi bi-mortarboard-fill"></i>Admission Completed Leads</h5>
+                        <h2 th:text="${dashboard.admissionCompletedLeads}">0</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card dashboard-card lost-card shadow-sm">
+                    <div class="card-body">
+                        <h5><i class="bi bi-person-x-fill"></i>Lost Leads</h5>
+                        <h2 th:text="${dashboard.lostLeads}">0</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card dashboard-card today-card shadow-sm">
+                    <div class="card-body">
+                        <h5><i class="bi bi-telephone-forward-fill"></i>Today's Calls</h5>
+                        <h2 th:text="${dashboard.todayCalls}">0</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card dashboard-card course-card shadow-sm">
+                    <div class="card-body">
+                        <h5><i class="bi bi-book-fill"></i>Courses</h5>
+                        <h2 th:text="${dashboard.totalCourses}">0</h2>
                     </div>
                 </div>
             </div>

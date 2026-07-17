@@ -8,6 +8,76 @@ body {
     box-shadow: 0 2px 8px rgba(0,0,0,.08);
 }
 
+.dashboard-card{
+    height:160px;
+    display: flex;
+    align-items: center;
+}
+
+.dashboard-card h5 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.dashboard-card h2{
+    font-size:48px;
+    font-weight:bold;
+    text-align:center;
+    margin-top:20px;
+}
+
+.dashboard-card .card-body {
+    width: 100%;
+    text-align: center;
+}
+
+.dashboard-card h5 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.total-card{
+    border-left:5px solid #2563EB;
+}
+
+.active-card{
+    border-left:5px solid #4F46E5;
+}
+
+.new-card{
+    border-left:5px solid #0EA5E9;
+}
+
+.contacted-card{
+    border-left:5px solid #06B6D4;
+}
+
+.followup-card{
+    border-left:5px solid #F59E0B;
+}
+
+.counseling-card{
+    border-left:5px solid #8B5CF6;
+}
+
+.admission-card{
+    border-left:5px solid #10B981;
+}
+
+.lost-card{
+    border-left:5px solid #EF4444;
+}
+
+.today-card{
+    border-left:5px solid #F97316;
+}
+
+.course-card{
+    border-left:5px solid #14B8A6;
+}
+
 .nav-link {
     color: #333;
     border-radius: 8px;
@@ -16,6 +86,11 @@ body {
 .nav-link:hover {
     background: #0d6efd;
     color: white;
+}
+
+.nav-link.active{
+    background:#0d6efd;
+    color:white;
 }
 
 .navbar-brand {

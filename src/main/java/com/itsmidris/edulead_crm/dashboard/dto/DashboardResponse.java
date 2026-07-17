@@ -25,4 +25,6 @@ public class DashboardResponse {
 
     private long todayCalls;
 
+    private Long totalCourses;
+
 }

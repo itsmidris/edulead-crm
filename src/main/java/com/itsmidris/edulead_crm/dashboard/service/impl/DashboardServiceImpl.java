@@ -2,6 +2,7 @@ package com.itsmidris.edulead_crm.dashboard.service.impl;
 
 import com.itsmidris.edulead_crm.calllog.repository.CallLogRepository;
 import com.itsmidris.edulead_crm.common.enums.LeadStatus;
+import com.itsmidris.edulead_crm.course.repository.CourseRepository;
 import com.itsmidris.edulead_crm.dashboard.dto.DashboardResponse;
 import com.itsmidris.edulead_crm.dashboard.service.DashboardService;
 import com.itsmidris.edulead_crm.lead.repository.LeadRepository;
@@ -15,10 +16,12 @@ public class DashboardServiceImpl  implements DashboardService {
 
     private final LeadRepository leadRepository;
     private final CallLogRepository callLogRepository;
+    private final CourseRepository courseRepository;
 
-    public DashboardServiceImpl(LeadRepository leadRepository, CallLogRepository callLogRepository) {
+    public DashboardServiceImpl(LeadRepository leadRepository, CallLogRepository callLogRepository, CourseRepository courseRepository) {
         this.leadRepository = leadRepository;
         this.callLogRepository = callLogRepository;
+        this.courseRepository = courseRepository;
     }
 
     @Override
@@ -44,6 +47,8 @@ public class DashboardServiceImpl  implements DashboardService {
         LocalDate today = LocalDate.now();
 
         response.setTodayCalls(callLogRepository.countByCallDateTimeBetween(today.atStartOfDay(), today.atTime(LocalTime.MAX)));
+
+        response.setTotalCourses(courseRepository.count());
 
         return response;
     }
