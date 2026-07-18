@@ -8,6 +8,9 @@ import com.itsmidris.edulead_crm.common.enums.LeadType;
 import com.itsmidris.edulead_crm.course.entity.Course;
 import com.itsmidris.edulead_crm.user.entity.AppUser;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -25,18 +28,21 @@ public class Lead extends BaseEntity {
     private String referenceCode;
 
     @Column(nullable = false, length = 50)
+    @NotBlank(message = "First Name is required")
     private String firstName;
 
     @Column(nullable = false, length = 50)
     private String lastName;
 
     @Column(nullable = false, unique = true, length = 15)
+    @NotBlank(message = "Student Phone is required")
     private String studentPhone;
 
     @Column(length = 15)
     private String parentPhone;
 
     @Column(length = 100)
+    @Email(message = "Please enter a valid email address")
     private String email;
 
     @Column(length = 50)
@@ -62,6 +68,7 @@ public class Lead extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
+    @NotNull(message = "Please select a lead source")
     private LeadSource leadSource;
 
     @Enumerated(EnumType.STRING)
