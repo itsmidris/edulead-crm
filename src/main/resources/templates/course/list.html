@@ -1,10 +1,126 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Course Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
+
 <body>
 
+<div th:replace="~{fragments/header :: header}"></div>
+
+<div class="d-flex">
+
+    <div th:replace="~{fragments/sidebar :: sidebar}"></div>
+
+    <div class="container-fluid p-4">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+
+            <h2 class="mb-0">Course Management</h2>
+
+            <div class="alert alert-success alert-dismissible fade show"
+                 role="alert"
+                 th:if="${param.success}">
+
+                <i class="bi bi-check-circle-fill"></i>
+
+                Course created successfully.
+
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="alert">
+                </button>
+
+            </div>
+
+            <div class="alert alert-success alert-dismissible fade show"
+                 role="alert"
+                 th:if="${param.updated}">
+
+                <i class="bi bi-check-circle-fill"></i>
+
+                Course updated successfully.
+
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="alert">
+                </button>
+
+            </div>
+
+            <a th:href="@{/courses/add}" class="btn btn-primary"> <i class="bi bi-plus-circle"></i>
+                Add Course
+            </a>
+
+        </div>
+
+        <div class="row mb-3">
+
+            <div class="col-md-4">
+                <input type="text" class="form-control" placeholder="Search courses...">
+            </div>
+
+            <div class="col-md-3">
+                <select class="form-select">
+                    <option>All Status</option>
+                    <option>Active</option>
+                    <option>Inactive</option>
+                </select>
+            </div>
+
+        </div>
+
+        <table class="table table-hover table-striped align-middle shadow-sm">
+            <thead class="table-dark">
+            <tr>
+                <th>Course</th>
+                <th>Duration</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="course : ${courses}">
+                <td th:text="${course.courseName}"></td>
+                <td th:text="${course.duration + ' Year(s)'}"></td>
+                <td><span class="badge"
+                          th:classappend="${course.active}
+                          ? ' bg-success'
+                          : ' bg-danger'"
+                          th:text="${course.active}
+                          ? 'ACTIVE'
+                          : 'INACTIVE'">
+                    </span>
+                </td>
+                <td>
+                    <a th:href="@{/courses/edit/{id}(id=${course.id})}" class="btn btn-warning btn-sm">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
+                    <a th:href="@{/courses/{id}(id=${course.id})}" class="btn btn-info btn-sm">
+                        <i class="bi bi-eye"></i>
+                    </a>
+                    <button class="btn btn-danger btn-sm">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
+
 </html>
