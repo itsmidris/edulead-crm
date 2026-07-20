@@ -12,6 +12,7 @@ body {
     height:160px;
     display: flex;
     align-items: center;
+    margin-bottom: 20px;
 }
 
 .dashboard-card h5 {
