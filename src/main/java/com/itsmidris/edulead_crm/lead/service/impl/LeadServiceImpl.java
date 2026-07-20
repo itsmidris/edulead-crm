@@ -3,6 +3,7 @@ package com.itsmidris.edulead_crm.lead.service.impl;
 import java.util.List;
 
 import com.itsmidris.edulead_crm.common.util.ReferenceCodeGenerator;
+import com.itsmidris.edulead_crm.lead.dto.request.UpdateLeadRequest;
 import org.springframework.stereotype.Service;
 
 import com.itsmidris.edulead_crm.common.enums.LeadStatus;
@@ -101,6 +102,42 @@ public class LeadServiceImpl implements LeadService {
         lead.setActive(false);
 
         leadRepository.save(lead);
+    }
+
+    @Override
+    public LeadResponse updateLead(Long id, UpdateLeadRequest request) {
+
+        Lead lead = leadRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Lead not found"));
+
+        // Check duplicate phone only if it changed
+        if (!lead.getStudentPhone().equals(request.getStudentPhone())
+                && leadRepository.existsByStudentPhone(request.getStudentPhone())) {
+            throw new DuplicateResourceException("Student phone already exists");
+        }
+
+        Course course = courseRepository.findById(request.getCourseId()).orElseThrow(() -> new ResourceNotFoundException("Course not found"));
+
+        AppUser caller = null;
+
+        if (request.getAssignedCallerId() != null) {
+            caller = appUserRepository.findById(request.getAssignedCallerId()).orElseThrow(() -> new ResourceNotFoundException("Caller not found"));
+        }
+
+        leadMapper.updateEntityFromRequest(request, lead);
+
+        lead.setCourse(course);
+
+        lead.setAssignedCaller(caller);
+
+        Lead updatedLead = leadRepository.save(lead);
+
+        return leadMapper.toResponse(updatedLead);
+    }
+
+    @Override
+    public UpdateLeadRequest getLeadForUpdate(Long id) {
+        Lead lead = leadRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Lead not found"));
+        return leadMapper.toUpdateRequest(lead);
     }
 
 }

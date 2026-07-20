@@ -5,16 +5,14 @@ import com.itsmidris.edulead_crm.common.enums.LeadSource;
 import com.itsmidris.edulead_crm.common.enums.LeadType;
 import com.itsmidris.edulead_crm.course.service.CourseService;
 import com.itsmidris.edulead_crm.lead.dto.request.CreateLeadRequest;
+import com.itsmidris.edulead_crm.lead.dto.request.UpdateLeadRequest;
 import com.itsmidris.edulead_crm.lead.service.LeadService;
 import com.itsmidris.edulead_crm.user.service.AppUserService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/leads")
@@ -41,27 +39,80 @@ public class LeadViewController {
     @GetMapping("/add")
     public String addLeadPage(Model model) {
         model.addAttribute("createLeadRequest", new CreateLeadRequest());
-        model.addAttribute("courses",courseService.getAllCourses());
-        model.addAttribute("users", appUserService.getAllUsers());
-        model.addAttribute("leadTypes", LeadType.values());
-        model.addAttribute("leadSources", LeadSource.values());
-        model.addAttribute("leadCreationMethods", LeadCreationMethod.values());
-        return "lead/add";
+
+        loadFormData(model);
+
+        model.addAttribute("isEdit", false);
+
+        return "lead/form";
     }
 
     @PostMapping("/add")
     public String saveLead(@Valid @ModelAttribute("createLeadRequest") CreateLeadRequest createLeadRequest, BindingResult bindingResult, Model model) {
         if(bindingResult.hasErrors()) {
-            model.addAttribute("courses", courseService.getAllCourses());
-            model.addAttribute("users", appUserService.getAllUsers());
-            model.addAttribute("leadTypes", LeadType.values());
-            model.addAttribute("leadSources", LeadSource.values());
-            model.addAttribute("leadCreationMethods", LeadCreationMethod.values());
+            loadFormData(model);
 
-            return "lead/add";
+            model.addAttribute("isEdit", false);
+
+            return "lead/form";
         }
         leadService.createLead(createLeadRequest);
-        return "redirect:/leads";
+        return "redirect:/leads?success";
+    }
+
+    @GetMapping("/{id}")
+    public String viewLead(@PathVariable Long id, Model model) {
+
+        model.addAttribute("lead", leadService.getLeadById(id));
+
+        return "lead/view";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String showEditLeadForm(@PathVariable Long id, Model model) {
+
+        model.addAttribute("leadId", id);
+
+        model.addAttribute("updateLeadRequest", leadService.getLeadForUpdate(id));
+
+        loadFormData(model);
+
+        model.addAttribute("isEdit", true);
+
+        return "lead/form";
+    }
+
+    @PostMapping("/edit/{id}")
+    public String updateLead(@PathVariable Long id, @Valid @ModelAttribute UpdateLeadRequest updateLeadRequest, BindingResult bindingResult, Model model) {
+
+        if (bindingResult.hasErrors()) {
+
+            model.addAttribute("leadId", id);
+
+            loadFormData(model);
+
+            model.addAttribute("isEdit", true);
+
+            return "lead/form";
+        }
+
+        leadService.updateLead(id, updateLeadRequest);
+
+        return "redirect:/leads?updated";
+    }
+
+    private void loadFormData(Model model) {
+
+        model.addAttribute("courses", courseService.getAllCourses());
+
+        model.addAttribute("users", appUserService.getAllUsers());
+
+        model.addAttribute("leadTypes", LeadType.values());
+
+        model.addAttribute("leadSources", LeadSource.values());
+
+        model.addAttribute("leadCreationMethods", LeadCreationMethod.values());
+
     }
 
 }
