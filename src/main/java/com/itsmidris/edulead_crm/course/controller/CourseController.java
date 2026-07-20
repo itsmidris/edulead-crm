@@ -3,6 +3,7 @@ package com.itsmidris.edulead_crm.course.controller;
 import com.itsmidris.edulead_crm.common.payload.ApiResponse;
 import com.itsmidris.edulead_crm.common.util.ResponseBuilder;
 import com.itsmidris.edulead_crm.course.dto.request.CreateCourseRequest;
+import com.itsmidris.edulead_crm.course.dto.request.UpdateCourseRequest;
 import com.itsmidris.edulead_crm.course.dto.response.CourseResponse;
 import com.itsmidris.edulead_crm.course.dto.response.CourseSummaryResponse;
 import com.itsmidris.edulead_crm.course.service.CourseService;
@@ -58,6 +59,12 @@ public class CourseController {
     public ResponseEntity<ApiResponse<Valid>> disableCourse(@PathVariable Long id) {
         courseService.disableCourse(id);
         return ResponseEntity.ok(ResponseBuilder.success("Course disabled Successfully.",null));
+    }
+
+    @Operation(summary = "Update Course", description = "Update an existing course.")
+    @PutMapping("/{id}")
+    public ResponseEntity<ApiResponse<CourseResponse>> updateCourse(@PathVariable Long id, @Valid @RequestBody UpdateCourseRequest request) {
+        return ResponseEntity.ok(ResponseBuilder.success("Course updated successfully.", courseService.updateCourse(id, request)));
     }
 
 }

@@ -3,6 +3,7 @@ package com.itsmidris.edulead_crm.course.service.impl;
 import com.itsmidris.edulead_crm.common.exception.DuplicateResourceException;
 import com.itsmidris.edulead_crm.common.exception.ResourceNotFoundException;
 import com.itsmidris.edulead_crm.course.dto.request.CreateCourseRequest;
+import com.itsmidris.edulead_crm.course.dto.request.UpdateCourseRequest;
 import com.itsmidris.edulead_crm.course.dto.response.CourseResponse;
 import com.itsmidris.edulead_crm.course.dto.response.CourseSummaryResponse;
 import com.itsmidris.edulead_crm.course.entity.Course;
@@ -43,7 +44,7 @@ public class CourseServiceImpl implements CourseService {
     public CourseResponse getCourseById(Long id) {
 
         Course course = courseRepository.findById(id)
-                .orElseThrow(()-> new ResourceNotFoundException("\"Course not found with id : \" + id"));
+                .orElseThrow(()-> new ResourceNotFoundException("Course not found with id : " + id));
         return courseMapper.toResponse(course);
     }
 
@@ -62,5 +63,22 @@ public class CourseServiceImpl implements CourseService {
         Course course = courseRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Course not found with id: "+ id));
         course.setActive(false);
         courseRepository.save(course);
+    }
+
+    @Override
+    public UpdateCourseRequest getCourseForUpdate(Long id) {
+        Course course = courseRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Course not found."));
+        return courseMapper.toUpdateRequest(course);
+    }
+
+    @Override
+    public CourseResponse updateCourse(Long id, UpdateCourseRequest request) {
+        Course course = courseRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Course not found."));
+        if (!course.getCourseName().equals(request.getCourseName()) && courseRepository.existsByCourseName(request.getCourseName())) {
+            throw new DuplicateResourceException("Course already exists.");
+        }
+        courseMapper.updateEntityFromRequest(request, course);
+        Course updatedCourse = courseRepository.save(course);
+        return courseMapper.toResponse(updatedCourse);
     }
 }
