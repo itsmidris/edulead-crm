@@ -129,4 +129,9 @@ public class FollowUpServiceImpl implements FollowUpService {
         followUpRepository.save(followUp);
     }
 
+    @Override
+    public List<FollowUpResponse> getAllFollowUps() {
+        return followUpRepository.findAll().stream().map(followUpMapper::toResponse).toList();
+    }
+
 }

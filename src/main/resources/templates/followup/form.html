@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Schedule Follow-up</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+<div th:replace="~{fragments/header :: header}"></div>
+
+<div class="d-flex">
+
+    <div th:replace="~{fragments/sidebar :: sidebar}"></div>
+
+    <div class="container-fluid p-4">
+
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>Schedule Follow-up</h2>
+            <a th:href="@{/follow-ups}" class="btn btn-secondary"><i class="bi bi-arrow-left"></i>
+                Back
+            </a>
+        </div>
+
+        <hr>
+
+        <form method="post"
+              th:action="@{/follow-ups/add}"
+              th:object="${followUpForm}">
+
+            <div class="card shadow-sm">
+
+                <div class="card-header">
+                    <h5 class="mb-0"><i class="bi bi-calendar-check"></i>Follow-up Details</h5>
+                </div>
+
+                <div class="card-body">
+
+                    <div class="row">
+
+                        <!-- Lead -->
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Lead *</label>
+                            <select class="form-select" th:field="*{leadId}">
+                                <option value="">Select Lead</option>
+                                <option th:each="lead : ${leads}"
+                                        th:value="${lead.id}"
+                                        th:text="${lead.referenceCode + ' - ' + lead.fullName}">
+                                </option>
+                            </select>
+                            <div class="text-danger"
+                                 th:errors="*{leadId}">
+                            </div>
+                        </div>
+
+                        <!-- Caller -->
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Caller *</label>
+                            <select class="form-select" th:field="*{callerId}">
+                                <option value="">Select Caller</option>
+                                <option th:each="user : ${users}"
+                                        th:value="${user.id}"
+                                        th:text="${user.firstName + ' ' + user.lastName}">
+                                </option>
+                            </select>
+                            <div class="text-danger"
+                                 th:errors="*{callerId}">
+                            </div>
+                        </div>
+
+                        <!-- Subject -->
+                        <div class="col-12 mb-3">
+                            <label class="form-label">Subject *</label>
+                            <input type="text" class="form-control" th:field="*{subject}" placeholder="Enter follow-up subject">
+                            <div class="text-danger" th:errors="*{subject}"></div>
+                        </div>
+
+                        <!-- Date & Time -->
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Follow-up Date & Time *</label>
+                            <input type="datetime-local" class="form-control" th:field="*{followUpDateTime}">
+                            <div class="text-danger" th:errors="*{followUpDateTime}"></div>
+                        </div>
+
+                        <!-- Priority -->
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Priority *</label>
+                            <select class="form-select" th:field="*{priority}">
+                                <option value="">Select Priority</option>
+                                <option value="LOW">LOW</option>
+                                <option value="MEDIUM">MEDIUM</option>
+                                <option value="HIGH">HIGH</option>
+                            </select>
+                            <div class="text-danger" th:errors="*{priority}"></div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="text-end mt-4">
+
+                <a th:href="@{/follow-ups}" class="btn btn-secondary">Cancel</a>
+
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-calendar-plus"></i>
+                    Schedule Follow-up
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

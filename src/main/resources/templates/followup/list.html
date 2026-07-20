@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Follow-up Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+<div th:replace="~{fragments/header :: header}"></div>
+
+<div class="d-flex">
+
+    <div th:replace="~{fragments/sidebar :: sidebar}"></div>
+
+    <div class="container-fluid p-4">
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2>Follow-up Management</h2>
+            <a th:href="@{/follow-ups/add}" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i>
+                Schedule Follow-up
+            </a>
+        </div>
+
+        <div th:if="${param.success}" class="alert alert-success alert-dismissible fade show">
+            Follow-up scheduled successfully.
+            <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert">
+            </button>
+        </div>
+
+        <div th:if="${param.completed}" class="alert alert-success alert-dismissible fade show">
+            Follow-up marked as completed.
+            <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert">
+            </button>
+        </div>
+
+        <div th:if="${param.cancelled}" class="alert alert-warning alert-dismissible fade show">
+            Follow-up cancelled successfully.
+            <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert">
+            </button>
+        </div>
+
+        <div class="card shadow-sm">
+
+            <div class="card-body">
+
+                <table class="table table-hover align-middle">
+
+                    <thead class="table-light">
+                    <tr>
+                        <th>Lead Ref</th>
+                        <th>Student</th>
+                        <th>Caller</th>
+                        <th>Subject</th>
+                        <th>Date & Time</th>
+                        <th>Priority</th>
+                        <th>Status</th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr th:if="${#lists.isEmpty(followUps)}">
+                        <td colspan="8" class="text-center text-muted">
+                            No follow-ups found.
+                        </td>
+                    </tr>
+
+                    <tr th:each="followUp : ${followUps}">
+                        <td th:text="${followUp.leadReference}"></td>
+                        <td th:text="${followUp.studentName}"></td>
+                        <td th:text="${followUp.callerName}"></td>
+                        <td th:text="${followUp.subject}"></td>
+                        <td th:text="${#temporals.format(followUp.followUpDateTime,'dd MMM yyyy HH:mm')}"></td>
+                        <td>
+                            <span class="badge bg-info" th:text="${followUp.priority}"></span>
+                        </td>
+                        <td>
+                            <span class="badge"
+                                  th:classappend="${
+                                  followUp.status.name() == 'PENDING' ? ' bg-warning text-dark' :
+                                  followUp.status.name() == 'COMPLETED' ? ' bg-success' :
+                                  ' bg-danger'
+                                  }"
+                                  th:text="${followUp.status}">
+                            </span>
+                        </td>
+                        <td class="text-center">
+                            <a th:href="@{/follow-ups/{id}(id=${followUp.id})}" class="btn btn-sm btn-outline-primary">
+                                <i class="bi bi-eye"></i>
+                            </a>
+                            <form th:if="${followUp.status.name() == 'PENDING'}"
+                                  th:action="@{/follow-ups/{id}/complete(id=${followUp.id})}"
+                                  method="post"
+                                  class="d-inline">
+                                <button type="submit"
+                                        class="btn btn-sm btn-outline-success"
+                                        title="Mark as Completed">
+                                    <i class="bi bi-check-circle"></i>
+                                </button>
+                            </form>
+                            <form th:if="${followUp.status.name() == 'PENDING'}"
+                                  th:action="@{/follow-ups/{id}/cancel(id=${followUp.id})}"
+                                  method="post"
+                                  class="d-inline">
+                                <button type="submit"
+                                        class="btn btn-sm btn-outline-danger"
+                                        title="Cancel Follow-up">
+                                    <i class="bi bi-x-circle"></i>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

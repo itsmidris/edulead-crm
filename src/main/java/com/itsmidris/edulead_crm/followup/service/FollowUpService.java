@@ -23,4 +23,6 @@ public interface FollowUpService {
 
     void deactivateFollowUp(Long id);
 
+    List<FollowUpResponse> getAllFollowUps();
+
 }
