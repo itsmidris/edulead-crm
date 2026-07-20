@@ -38,7 +38,7 @@ public class LeadViewController {
 
     @GetMapping("/add")
     public String addLeadPage(Model model) {
-        model.addAttribute("createLeadRequest", new CreateLeadRequest());
+        model.addAttribute("leadForm", new CreateLeadRequest());
 
         loadFormData(model);
 
@@ -48,7 +48,7 @@ public class LeadViewController {
     }
 
     @PostMapping("/add")
-    public String saveLead(@Valid @ModelAttribute("createLeadRequest") CreateLeadRequest createLeadRequest, BindingResult bindingResult, Model model) {
+    public String saveLead(@Valid @ModelAttribute("leadForm") CreateLeadRequest createLeadRequest, BindingResult bindingResult, Model model) {
         if(bindingResult.hasErrors()) {
             loadFormData(model);
 
@@ -73,7 +73,7 @@ public class LeadViewController {
 
         model.addAttribute("leadId", id);
 
-        model.addAttribute("updateLeadRequest", leadService.getLeadForUpdate(id));
+        model.addAttribute("leadForm", leadService.getLeadForUpdate(id));
 
         loadFormData(model);
 
@@ -83,7 +83,7 @@ public class LeadViewController {
     }
 
     @PostMapping("/edit/{id}")
-    public String updateLead(@PathVariable Long id, @Valid @ModelAttribute UpdateLeadRequest updateLeadRequest, BindingResult bindingResult, Model model) {
+    public String updateLead(@PathVariable Long id, @Valid @ModelAttribute("leadForm") UpdateLeadRequest updateLeadRequest, BindingResult bindingResult, Model model) {
 
         if (bindingResult.hasErrors()) {
 

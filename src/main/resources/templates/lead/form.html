@@ -39,10 +39,7 @@
               ? @{/leads/edit/{id}(id=${leadId})}
               : @{/leads/add}"
 
-              th:object="${isEdit} ?
-                 ${updateLeadRequest}
-                 :
-                 ${createLeadRequest}">
+              th:object="${leadForm}">
 
             <div class="card shadow-sm mb-4">
 
