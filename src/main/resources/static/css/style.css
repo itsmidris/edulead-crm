@@ -102,3 +102,27 @@ body {
 .navbar-brand {
     font-weight: bold;
 }
+
+/* ===========================
+   Footer
+=========================== */
+
+.footer{
+    background:#212529;
+    border-top:1px solid #343a40;
+}
+
+.footer h5{
+    letter-spacing:.8px;
+}
+
+.footer-link{
+    color:#adb5bd;
+    transition:all .25s ease;
+    text-decoration:none;
+}
+
+.footer-link:hover{
+    color:#0d6efd;
+    transform:translateY(-3px);
+}
