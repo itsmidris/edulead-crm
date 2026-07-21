@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Filter by Outcome</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+<div th:replace="~{fragments/header :: header}"></div>
+
+<div class="d-flex">
+
+    <div th:replace="~{fragments/sidebar :: sidebar}"></div>
+
+    <div class="container-fluid p-4">
+
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>Filter by Call Outcome</h2>
+            <a th:href="@{/call-logs}" class="btn btn-secondary">
+                <i class="bi bi-arrow-left"></i>
+                Back
+            </a>
+        </div>
+
+        <hr>
+
+        <div class="card shadow-sm">
+
+            <div class="card-header">
+                <h5 class="mb-0">Select Outcome</h5>
+            </div>
+
+            <div class="card-body">
+
+                <form method="get" th:action="@{/call-logs/outcome/result}">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="form-label">Call Outcome</label>
+                            <select name="outcome" class="form-select" required>
+                                <option value="">Select Outcome</option>
+                                <option value="INTERESTED">Interested</option>
+                                <option value="CALLBACK_REQUESTED">Callback Requested</option>
+                                <option value="COUNSELING_REQUIRED">Counseling Required</option>
+                                <option value="NOT_INTERESTED">Not Interested</option>
+                                <option value="WRONG_NUMBER">Wrong Number</option>
+                                <option value="BUSY">Busy</option>
+                                <option value="NO_ANSWER">No Answer</option>
+                                <option value="ADMISSION_TAKEN_ELSEWHERE">Admission Taken Elsewhere</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-search"></i>
+                            Search
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
