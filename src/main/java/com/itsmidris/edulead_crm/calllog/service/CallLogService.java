@@ -23,4 +23,6 @@ public interface CallLogService {
 
     CallLogResponse getCallLogById(Long id);
 
+    List<CallLogResponse> getAllCallLogs();
+
 }

@@ -160,4 +160,9 @@ public class CallLogServiceImpl implements CallLogService {
         CallLog callLog = callLogRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Call log not found."));
         return callLogMapper.toResponse(callLog);
     }
+
+    @Override
+    public List<CallLogResponse> getAllCallLogs() {
+        return callLogRepository.findAllByOrderByCallDateTimeDesc().stream().map(callLogMapper::toResponse).toList();
+    }
 }
