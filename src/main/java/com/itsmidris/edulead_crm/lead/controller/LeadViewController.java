@@ -32,6 +32,7 @@ public class LeadViewController {
     public String listLeads(Model model) {
 
         model.addAttribute("leads", leadService.getAllLeads());
+        model.addAttribute("activeMenu", "lead");
 
         return "lead/list";
     }
@@ -41,7 +42,7 @@ public class LeadViewController {
         model.addAttribute("leadForm", new CreateLeadRequest());
 
         loadFormData(model);
-
+        model.addAttribute("activeMenu", "lead");
         model.addAttribute("isEdit", false);
 
         return "lead/form";
@@ -51,6 +52,7 @@ public class LeadViewController {
     public String saveLead(@Valid @ModelAttribute("leadForm") CreateLeadRequest createLeadRequest, BindingResult bindingResult, Model model) {
         if(bindingResult.hasErrors()) {
             loadFormData(model);
+            model.addAttribute("activeMenu", "lead");
 
             model.addAttribute("isEdit", false);
 
@@ -64,6 +66,7 @@ public class LeadViewController {
     public String viewLead(@PathVariable Long id, Model model) {
 
         model.addAttribute("lead", leadService.getLeadById(id));
+        model.addAttribute("activeMenu", "lead");
 
         return "lead/view";
     }
@@ -76,7 +79,7 @@ public class LeadViewController {
         model.addAttribute("leadForm", leadService.getLeadForUpdate(id));
 
         loadFormData(model);
-
+        model.addAttribute("activeMenu", "lead");
         model.addAttribute("isEdit", true);
 
         return "lead/form";
@@ -88,6 +91,7 @@ public class LeadViewController {
         if (bindingResult.hasErrors()) {
 
             model.addAttribute("leadId", id);
+            model.addAttribute("activeMenu", "lead");
 
             loadFormData(model);
 

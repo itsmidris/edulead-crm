@@ -3,9 +3,7 @@
 
 <body>
 
-<div class="bg-light border-end vh-100 p-3"
-     style="width:250px;"
-     th:fragment="sidebar">
+<div class="bg-light border-end vh-100 p-3" style="width:250px;" th:fragment="sidebar">
 
     <h5>Navigation</h5>
 
@@ -14,42 +12,42 @@
     <ul class="nav flex-column">
 
         <li class="nav-item mb-2">
-            <a class="nav-link" th:href="@{/}">
+            <a class="nav-link" th:href="@{/}" th:classappend="${activeMenu == 'dashboard'} ? ' active'">
                 <i class="bi bi-speedometer2"></i>
                 Dashboard
             </a>
         </li>
 
         <li class="nav-item mb-2">
-            <a class="nav-link" th:href="@{/leads}">
+            <a class="nav-link" th:href="@{/leads}" th:classappend="${activeMenu == 'lead'} ? ' active'">
                 <i class="bi bi-people"></i>
                 Leads
             </a>
         </li>
 
         <li class="nav-item mb-2">
-            <a class="nav-link" href="/courses">
+            <a class="nav-link" href="/courses" th:classappend="${activeMenu == 'course'} ? ' active'">
                 <i class="bi bi-book"></i>
                 Courses
             </a>
         </li>
 
         <li class="nav-item mb-2">
-            <a class="nav-link" href="/counselors">
+            <a class="nav-link" href="/counselors" th:classappend="${activeMenu == 'counselor'} ? ' active'">
                 <i class="bi bi-person-workspace"></i>
                 Counselors
             </a>
         </li>
 
         <li class="nav-item mb-2">
-            <a class="nav-link" href="/follow-ups">
+            <a class="nav-link" href="/follow-ups" th:classappend="${activeMenu == 'followup'} ? ' active'">
                 <i class="bi bi-calendar-check"></i>
                 Follow-ups
             </a>
         </li>
 
         <li class="nav-item mb-2">
-            <a class="nav-link" href="/call-logs">
+            <a class="nav-link" href="/call-logs" th:classappend="${activeMenu == 'calllog'} ? ' active'">
                 <i class="bi bi-telephone"></i>
                 Call Logs
             </a>

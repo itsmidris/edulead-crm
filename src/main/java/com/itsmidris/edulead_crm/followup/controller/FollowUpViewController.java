@@ -31,12 +31,14 @@ public class FollowUpViewController {
     @GetMapping
     public String listFollowUps(Model model) {
         model.addAttribute("followUps", followUpService.getAllFollowUps());
+        model.addAttribute("activeMenu", "followup");
         return "followup/list";
     }
 
     @GetMapping("/add")
     public String showAddForm(Model model) {
         model.addAttribute("followUpForm", new CreateFollowUpRequest());
+        model.addAttribute("activeMenu", "followup");
         loadFormData(model);
         return "followup/form";
     }
@@ -44,6 +46,7 @@ public class FollowUpViewController {
     @PostMapping("/add")
     public String saveFollowUp(@Valid @ModelAttribute("followUpForm") CreateFollowUpRequest request, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
+            model.addAttribute("activeMenu", "followup");
             loadFormData(model);
             return "followup/form";
         }
@@ -54,6 +57,7 @@ public class FollowUpViewController {
     @GetMapping("/{id}")
     public String viewFollowUp(@PathVariable Long id, Model model) {
         model.addAttribute("followUp", followUpService.getFollowUpById(id));
+        model.addAttribute("activeMenu", "followup");
         return "followup/view";
     }
 

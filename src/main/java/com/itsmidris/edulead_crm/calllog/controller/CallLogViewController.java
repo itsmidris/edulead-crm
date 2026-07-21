@@ -31,6 +31,7 @@ public class CallLogViewController {
     public String listCallLogs(Model model) {
         model.addAttribute("callLogs", callLogService.getTodayCallLogs());
         model.addAttribute("pageTitle", "Today's Call Logs");
+        model.addAttribute("activeMenu", "calllog");
         model.addAttribute("activeTab", "today");
         return "calllog/list";
     }
@@ -38,6 +39,7 @@ public class CallLogViewController {
     @GetMapping("/add")
     public String showAddForm(Model model) {
         model.addAttribute("callLogForm", new CreateCallLogRequest());
+        model.addAttribute("activeMenu", "calllog");
         loadFormData(model);
         return "calllog/form";
     }
@@ -45,6 +47,7 @@ public class CallLogViewController {
     @PostMapping("/add")
     public String saveCallLog(@Valid @ModelAttribute("callLogForm") CreateCallLogRequest request, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
+            model.addAttribute("activeMenu", "calllog");
             loadFormData(model);
             return "calllog/form";
         }
@@ -55,6 +58,7 @@ public class CallLogViewController {
     @GetMapping("/{id}")
     public String viewCallLog(@PathVariable Long id, Model model) {
         model.addAttribute("callLog", callLogService.getCallLogById(id));
+        model.addAttribute("activeMenu", "calllog");
         return "calllog/view";
     }
 
@@ -62,6 +66,7 @@ public class CallLogViewController {
     public String allCallLogs(Model model) {
         model.addAttribute("callLogs", callLogService.getAllCallLogs());
         model.addAttribute("pageTitle", "All Call Logs");
+        model.addAttribute("activeMenu", "calllog");
         model.addAttribute("activeTab", "all");
         return "calllog/list";
     }
@@ -69,6 +74,7 @@ public class CallLogViewController {
     @GetMapping("/caller-history")
     public String callerHistory(Model model) {
         model.addAttribute("users", appUserService.getAllUsers());
+        model.addAttribute("activeMenu", "calllog");
         return "calllog/caller-history";
     }
 
@@ -76,6 +82,7 @@ public class CallLogViewController {
     public String callerHistoryResult(@RequestParam Long callerId, Model model) {
         model.addAttribute("callLogs", callLogService.getCallerCallHistory(callerId));
         model.addAttribute("pageTitle", "Caller History");
+        model.addAttribute("activeMenu", "calllog");
         model.addAttribute("activeTab", "caller");
         return "calllog/list";
     }
@@ -83,6 +90,7 @@ public class CallLogViewController {
     @GetMapping("/lead-history")
     public String leadHistory(Model model) {
         model.addAttribute("leads", leadService.getActiveLeads());
+        model.addAttribute("activeMenu", "calllog");
         return "calllog/lead-history";
     }
 
@@ -90,12 +98,14 @@ public class CallLogViewController {
     public String leadHistoryResult(@RequestParam Long leadId, Model model) {
         model.addAttribute("callLogs", callLogService.getLeadCallHistory(leadId));
         model.addAttribute("pageTitle", "Lead Call History");
+        model.addAttribute("activeMenu", "calllog");
         model.addAttribute("activeTab", "lead");
         return "calllog/list";
     }
 
     @GetMapping("/outcome")
-    public String outcomePage() {
+    public String outcomePage(Model model) {
+        model.addAttribute("activeMenu", "calllog");
         return "calllog/outcome";
     }
 
@@ -103,12 +113,14 @@ public class CallLogViewController {
     public String outcomeResult(@RequestParam CallOutcome outcome, Model model) {
         model.addAttribute("callLogs", callLogService.getCallLogsByOutcome(outcome));
         model.addAttribute("pageTitle", "Outcome : " + outcome);
+        model.addAttribute("activeMenu", "calllog");
         model.addAttribute("activeTab", "outcome");
         return "calllog/list";
     }
 
     @GetMapping("/date-range")
-    public String dateRangePage() {
+    public String dateRangePage(Model model) {
+        model.addAttribute("activeMenu", "calllog");
         return "calllog/date-range";
     }
 
@@ -116,6 +128,7 @@ public class CallLogViewController {
     public String dateRangeResult(@RequestParam LocalDate startDate, @RequestParam LocalDate endDate, Model model) {
         model.addAttribute("callLogs", callLogService.getCallLogsBetween(startDate, endDate));
         model.addAttribute("pageTitle", "Call Logs from " + startDate + " to " + endDate);
+        model.addAttribute("activeMenu", "calllog");
         model.addAttribute("activeTab", "date");
         return "calllog/list";
     }

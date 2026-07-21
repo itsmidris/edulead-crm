@@ -21,6 +21,7 @@ public class DashboardViewController {
         DashboardResponse dashboard = dashboardService.getDashboardSummary();
 
         model.addAttribute("dashboard", dashboard);
+        model.addAttribute("activeMenu", "dashboard");
 
         return "dashboard/dashboard";
     }

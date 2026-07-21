@@ -22,12 +22,14 @@ public class CourseViewController {
     @GetMapping
     public String listCourses(Model model) {
         model.addAttribute("courses", courseService.getAllCourses());
+        model.addAttribute("activeMenu", "course");
         return "course/list";
     }
 
     @GetMapping("/add")
     public String showAddCourseForm(Model model) {
         model.addAttribute("courseForm",new CreateCourseRequest());
+        model.addAttribute("activeMenu", "course");
         model.addAttribute("isEdit", false);
         return "course/form";
     }
@@ -35,6 +37,7 @@ public class CourseViewController {
     @PostMapping("/add")
     public String saveCourse(@Valid @ModelAttribute("courseForm") CreateCourseRequest request, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
+            model.addAttribute("activeMenu", "course");
             model.addAttribute("isEdit", false);
             return "course/form";
         }
@@ -46,6 +49,7 @@ public class CourseViewController {
     public String showEditCourseForm(@PathVariable Long id, Model model) {
         model.addAttribute("courseId", id);
         model.addAttribute("courseForm", courseService.getCourseForUpdate(id));
+        model.addAttribute("activeMenu", "course");
         model.addAttribute("isEdit", true);
         return "course/form";
     }
@@ -54,6 +58,7 @@ public class CourseViewController {
     public String updateCourse(@PathVariable Long id, @Valid @ModelAttribute("courseForm")UpdateCourseRequest request, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("courseId", id);
+            model.addAttribute("activeMenu", "course");
             model.addAttribute("isEdit", true);
             return "course/form";
         }
