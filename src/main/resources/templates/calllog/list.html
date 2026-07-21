@@ -1,10 +1,110 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+
 <head>
+
     <meta charset="UTF-8">
-    <title>Title</title>
+
+    <title>Call Log Management</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
 </head>
+
 <body>
 
+<div th:replace="~{fragments/header :: header}"></div>
+
+<div class="d-flex">
+
+    <div th:replace="~{fragments/sidebar :: sidebar}"></div>
+
+    <div class="container-fluid p-4">
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2>Today's Call Logs</h2>
+            <a th:href="@{/call-logs/add}" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i>
+                Add Call Log
+            </a>
+        </div>
+
+        <!-- Success Message -->
+        <div th:if="${param.success}" class="alert alert-success alert-dismissible fade show">
+            Call log created successfully.
+            <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert">
+            </button>
+        </div>
+
+        <!-- Filters -->
+        <div class="card shadow-sm mb-3">
+            <div class="card-body">
+                <div class="d-flex flex-wrap gap-2">
+                    <a class="btn btn-outline-primary" th:href="@{/call-logs}">Today's Calls</a>
+                    <a class="btn btn-outline-secondary" href="#">All Calls</a>
+                    <a class="btn btn-outline-secondary" href="#">Caller History</a>
+                    <a class="btn btn-outline-secondary" href="#">Lead History</a>
+                    <a class="btn btn-outline-secondary" href="#">Outcome</a>
+                    <a class="btn btn-outline-secondary" href="#">Date Range</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table -->
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <table class="table table-hover align-middle">
+                    <thead class="table-light">
+                    <tr>
+                        <th>Lead Ref</th>
+                        <th>Student</th>
+                        <th>Caller</th>
+                        <th>Outcome</th>
+                        <th>Call Time</th>
+                        <th>Duration</th>
+                        <th>Next Follow-up</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:if="${#lists.isEmpty(callLogs)}">
+                        <td colspan="8" class="text-center text-muted">
+                            No call logs found today.
+                        </td>
+                    </tr>
+                    <tr th:each="callLog : ${callLogs}">
+                        <td th:text="${callLog.leadReference}"></td>
+                        <td th:text="${callLog.studentName}"></td>
+                        <td th:text="${callLog.callerName}"></td>
+                        <td><span class="badge bg-primary" th:text="${callLog.callOutcome}"></span></td>
+                        <td th:text="${#temporals.format(callLog.callDateTime,'dd MMM yyyy HH:mm')}"></td>
+                        <td th:text="${callLog.durationInSeconds != null ? callLog.durationInSeconds + ' sec' : '-'}"></td>
+                        <td th:text="${callLog.nextFollowUpDate != null ? #temporals.format(callLog.nextFollowUpDate,'dd MMM yyyy') : '-'}"></td>
+                        <td>
+                            <a th:href="@{/call-logs/{id}(id=${callLog.id})}"
+                               class="btn btn-sm btn-outline-primary"
+                               title="View">
+                                <i class="bi bi-eye"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
+
 </html>

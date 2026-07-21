@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Call Log Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+<div th:replace="~{fragments/header :: header}"></div>
+
+<div class="d-flex">
+
+    <div th:replace="~{fragments/sidebar :: sidebar}"></div>
+
+    <div class="container-fluid p-4">
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2>Call Log Details</h2>
+            <a th:href="@{/call-logs}" class="btn btn-secondary">
+                <i class="bi bi-arrow-left"></i>
+                Back
+            </a>
+        </div>
+
+        <div class="card shadow-sm">
+
+            <div class="card-header">
+                <h5 class="mb-0">Call Information</h5>
+            </div>
+
+            <div class="card-body">
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+                        <strong>Lead Reference</strong>
+                        <p th:text="${callLog.leadReference}"></p>
+                    </div>
+
+                    <div class="col-md-6">
+                        <strong>Student</strong>
+                        <p th:text="${callLog.studentName}"></p>
+                    </div>
+
+                    <div class="col-md-6">
+                        <strong>Caller</strong>
+                        <p th:text="${callLog.callerName}"></p>
+                    </div>
+
+                    <div class="col-md-6">
+                        <strong>Outcome</strong>
+                        <p><span class="badge bg-primary" th:text="${callLog.callOutcome}"></span></p>
+                    </div>
+
+                    <div class="col-md-6">
+                        <strong>Call Time</strong>
+                        <p th:text="${#temporals.format(callLog.callDateTime,'dd MMM yyyy HH:mm')}"></p>
+                    </div>
+
+                    <div class="col-md-6">
+                        <strong>Duration</strong>
+                        <p th:text="${callLog.durationInSeconds != null ? callLog.durationInSeconds + ' sec' : '-'}"></p>
+                    </div>
+
+                    <div class="col-md-6">
+                        <strong>Next Follow-up</strong>
+                        <p th:text="${callLog.nextFollowUpDate != null ? #temporals.format(callLog.nextFollowUpDate,'dd MMM yyyy') : '-'}"></p>
+                    </div>
+
+                    <div class="col-12">
+                        <strong>Remarks</strong>
+                        <p th:text="${callLog.remarks != null ? callLog.remarks : '-'}"></p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

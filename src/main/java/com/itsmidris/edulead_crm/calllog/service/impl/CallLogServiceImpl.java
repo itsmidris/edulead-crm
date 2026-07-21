@@ -154,4 +154,10 @@ public class CallLogServiceImpl implements CallLogService {
                 .findByCallOutcomeOrderByCallDateTimeDesc(callOutcome)
                 .stream().map(callLogMapper::toResponse).toList();
     }
+
+    @Override
+    public CallLogResponse getCallLogById(Long id) {
+        CallLog callLog = callLogRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Call log not found."));
+        return callLogMapper.toResponse(callLog);
+    }
 }
