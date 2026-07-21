@@ -24,7 +24,10 @@
     <div class="container-fluid p-4">
 
         <div class="d-flex justify-content-between align-items-center mb-3">
-            <h2 th:text="${pageTitle}">Today's Call Logs</h2>
+            <div>
+                <h2 th:text="${pageTitle}">Today's Call Logs</h2>
+                <small class="text-muted" th:text="${#lists.size(callLogs) + ' Records'}"></small>
+            </div>
             <a th:href="@{/call-logs/add}" class="btn btn-primary">
                 <i class="bi bi-plus-circle"></i>
                 Add Call Log
@@ -44,19 +47,26 @@
         <div class="card shadow-sm mb-3">
             <div class="card-body">
                 <div class="d-flex flex-wrap gap-2">
-                    <a class="btn btn-outline-primary" th:href="@{/call-logs}">Today's Calls</a>
-                    <a class="btn btn-outline-secondary" th:href="@{/call-logs/all}">All Calls</a>
-                    <a class="btn btn-outline-secondary" th:href="@{/call-logs/caller-history}">Caller History</a>
-                    <a class="btn btn-outline-secondary" th:href="@{/call-logs/lead-history}">Lead History</a>
-                    <a class="btn btn-outline-secondary" th:href="@{/call-logs/outcome}">Outcome</a>
-                    <a class="btn btn-outline-secondary" th:href="@{/call-logs/date-range}">Date Range</a>
+                    <a class="btn"
+                       th:href="@{/call-logs}"
+                       th:classappend="${activeTab == 'today'} ? ' btn-primary' : ' btn-outline-secondary'">Today's Calls</a>
+                    <a class="btn"
+                       th:href="@{/call-logs/all}"
+                       th:classappend="${activeTab == 'all'} ? ' btn-primary' : ' btn-outline-secondary'">All Calls</a>
+                    <a class="btn"
+                       th:href="@{/call-logs/caller-history}"
+                       th:classappend="${activeTab == 'caller'} ? ' btn-primary' : ' btn-outline-secondary'">Caller History</a>
+                    <a class="btn"
+                       th:href="@{/call-logs/lead-history}"
+                       th:classappend="${activeTab == 'lead'} ? ' btn-primary' : ' btn-outline-secondary'">Lead History</a>
+                    <a class="btn"
+                       th:href="@{/call-logs/outcome}"
+                       th:classappend="${activeTab == 'outcome'} ? ' btn-primary' : ' btn-outline-secondary'">Outcome</a>
+                    <a class="btn"
+                       th:href="@{/call-logs/date-range}"
+                       th:classappend="${activeTab == 'date'} ? ' btn-primary' : ' btn-outline-secondary'">Date Range</a>
                 </div>
             </div>
-        </div>
-
-        <div class="d-flex justify-content-between align-items-center mb-3">
-            <h2 th:text="${pageTitle}"></h2>
-            <span class="badge bg-secondary" th:text="${#lists.size(callLogs) + ' Records'}"></span>
         </div>
 
         <!-- Table -->
@@ -85,19 +95,7 @@
                         <td th:text="${callLog.leadReference}"></td>
                         <td th:text="${callLog.studentName}"></td>
                         <td th:text="${callLog.callerName}"></td>
-                        <td>
-                            <span class="badge"
-                                  th:text="${callLog.callOutcome}"
-                                  th:classappend="
-                                  ${callLog.callOutcome.name() == 'INTERESTED'} ? ' bg-success' :
-                                  ${callLog.callOutcome.name() == 'CALLBACK_REQUESTED'} ? ' bg-warning text-dark' :
-                                  ${callLog.callOutcome.name() == 'COUNSELING_REQUIRED'} ? ' bg-info text-dark' :
-                                  ${callLog.callOutcome.name() == 'NOT_INTERESTED'} ? ' bg-danger' :
-                                  ${callLog.callOutcome.name() == 'WRONG_NUMBER'} ? ' bg-secondary' :
-                                  ${callLog.callOutcome.name() == 'NO_ANSWER'} ? ' bg-dark' :
-                                  ' bg-primary'">
-                            </span>
-                        </td>
+                        <td><span class="badge bg-primary" th:text="${callLog.callOutcome}"></span></td>
                         <td th:text="${#temporals.format(callLog.callDateTime,'dd MMM yyyy HH:mm')}"></td>
                         <td th:text="${callLog.durationInSeconds != null ? callLog.durationInSeconds + ' sec' : '-'}"></td>
                         <td th:text="${callLog.nextFollowUpDate != null ? #temporals.format(callLog.nextFollowUpDate,'dd MMM yyyy') : '-'}"></td>
