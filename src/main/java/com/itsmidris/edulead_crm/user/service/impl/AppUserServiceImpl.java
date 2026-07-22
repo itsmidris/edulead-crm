@@ -19,12 +19,15 @@ import java.util.List;
 public class AppUserServiceImpl implements AppUserService {
     private final AppUserRepository appUserRepository;
     private final AppUserMapper appUserMapper;
+    private final PasswordEncoder passwordEncoder;
 
     public AppUserServiceImpl(
             AppUserRepository appUserRepository,
-            AppUserMapper appUserMapper) {
+            AppUserMapper appUserMapper,
+            PasswordEncoder passwordEncoder) {
         this.appUserRepository = appUserRepository;
         this.appUserMapper = appUserMapper;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -39,6 +42,8 @@ public class AppUserServiceImpl implements AppUserService {
         }
 
         AppUser appUser = appUserMapper.toEntity(request);
+
+        appUser.setPassword(passwordEncoder.encode(request.getPassword()));
 
         AppUser savedUser = appUserRepository.save(appUser);
 
