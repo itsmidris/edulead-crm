@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600">
+
+    <defs>
+
+        <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+
+            <stop offset="0%" stop-color="#2D6CFF"></stop>
+            <stop offset="100%" stop-color="#6C63FF"></stop>
+
+        </linearGradient>
+
+        <linearGradient id="chart" x1="0%" y1="0%" x2="100%" y2="100%">
+
+            <stop offset="0%" stop-color="#39D0FF"></stop>
+            <stop offset="100%" stop-color="#2D6CFF"></stop>
+
+        </linearGradient>
+
+    </defs>
+
+    <!-- Laptop -->
+
+    <rect x="170" y="110" rx="18" width="560" height="330" fill="white"></rect>
+
+    <rect x="170" y="110" width="560" height="30" rx="18" fill="url(#bg)"></rect>
+
+    <circle cx="700" cy="125" r="5" fill="white"></circle>
+    <circle cx="682" cy="125" r="5" fill="white"></circle>
+    <circle cx="664" cy="125" r="5" fill="white"></circle>
+
+    <!-- Line Chart -->
+
+    <rect x="215" y="170" width="250" height="120" rx="12" fill="#F5F8FF"></rect>
+
+    <polyline points="
+            235,260
+            280,230
+            320,240
+            360,200
+            410,180
+            445,150" fill="none" stroke="url(#chart)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"></polyline>
+
+    <circle cx="235" cy="260" r="6" fill="#2D6CFF"></circle>
+    <circle cx="280" cy="230" r="6" fill="#2D6CFF"></circle>
+    <circle cx="320" cy="240" r="6" fill="#2D6CFF"></circle>
+    <circle cx="360" cy="200" r="6" fill="#2D6CFF"></circle>
+    <circle cx="410" cy="180" r="6" fill="#2D6CFF"></circle>
+    <circle cx="445" cy="150" r="6" fill="#2D6CFF"></circle>
+
+    <!-- Pie Chart -->
+
+    <circle cx="585" cy="230" r="60" fill="#EDF3FF"></circle>
+
+    <path d="
+            M585 230
+            L585 170
+            A60 60 0 0 1 635 260
+            Z" fill="#2D6CFF"></path>
+
+    <path d="
+            M585 230
+            L635 260
+            A60 60 0 0 1 540 270
+            Z" fill="#6C63FF"></path>
+
+    <!-- Student Cards -->
+
+    <rect x="220" y="325" width="120" height="70" rx="10" fill="#F7F9FF"></rect>
+
+    <circle cx="250" cy="350" r="12" fill="#2D6CFF"></circle>
+
+    <rect x="270" y="343" width="45" height="8" rx="4" fill="#B8C8F8"></rect>
+
+    <rect x="270" y="360" width="35" height="8" rx="4" fill="#D7E2FF"></rect>
+
+    <rect x="370" y="325" width="120" height="70" rx="10" fill="#F7F9FF"></rect>
+
+    <circle cx="400" cy="350" r="12" fill="#6C63FF"></circle>
+
+    <rect x="420" y="343" width="45" height="8" rx="4" fill="#B8C8F8"></rect>
+
+    <rect x="420" y="360" width="35" height="8" rx="4" fill="#D7E2FF"></rect>
+
+    <!-- Calendar -->
+
+    <rect x="540" y="320" width="130" height="90" rx="12" fill="#F5F8FF"></rect>
+
+    <rect x="540" y="320" width="130" height="18" rx="12" fill="#2D6CFF"></rect>
+
+    <g fill="#D7E2FF">
+
+        <rect x="555" y="350" width="18" height="18" rx="4"></rect>
+        <rect x="582" y="350" width="18" height="18" rx="4"></rect>
+        <rect x="609" y="350" width="18" height="18" rx="4"></rect>
+
+        <rect x="555" y="376" width="18" height="18" rx="4"></rect>
+        <rect x="582" y="376" width="18" height="18" rx="4"></rect>
+        <rect x="609" y="376" width="18" height="18" rx="4"></rect>
+
+    </g>
+
+    <!-- Graduation Cap -->
+
+    <polygon points="120,160 70,185 120,210 170,185" fill="#1E3A8A"></polygon>
+
+    <rect x="90" y="208" width="60" height="8" rx="4" fill="#1E3A8A"></rect>
+
+    <!-- Mobile Screen -->
+
+    <rect x="90" y="250" width="80" height="140" rx="18" fill="white"></rect>
+
+    <circle cx="130" cy="285" r="14" fill="#2D6CFF"></circle>
+
+    <rect x="110" y="315" width="40" height="8" rx="4" fill="#D7E2FF"></rect>
+
+    <rect x="110" y="335" width="50" height="8" rx="4" fill="#D7E2FF"></rect>
+
+</svg>

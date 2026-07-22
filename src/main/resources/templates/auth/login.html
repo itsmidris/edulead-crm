@@ -7,21 +7,17 @@
 <body>
 
 <div class="container-fluid p-0">
-
     <div class="row g-0 auth-layout">
-
         <!-- Left Branding Panel -->
         <div class="col-lg-7">
             <div th:replace="~{auth/fragments/left-panel :: leftPanel}"></div>
         </div>
 
-        <!-- Right Login Panel -->
+        <!-- Right Login Panel - Sticky -->
         <div class="col-lg-5">
             <div th:replace="~{auth/fragments/right/login-card :: loginCard}"></div>
         </div>
-
     </div>
-
 </div>
 
 <div th:replace="~{auth/fragments/scripts :: scripts}"></div>

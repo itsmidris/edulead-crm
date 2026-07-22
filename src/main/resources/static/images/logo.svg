@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+
+    <defs>
+
+        <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+
+            <stop offset="0%" stop-color="#2D6CFF"></stop>
+            <stop offset="100%" stop-color="#2347D8"></stop>
+
+        </linearGradient>
+
+    </defs>
+
+    <!-- Background -->
+
+    <rect x="8" y="8" width="112" height="112" rx="24" fill="url(#blueGradient)"></rect>
+
+    <!-- Graduation Cap -->
+
+    <polygon points="64,22 28,38 64,54 100,38" fill="white"></polygon>
+
+    <rect x="39" y="53" width="50" height="6" rx="3" fill="white"></rect>
+
+    <line x1="96" y1="38" x2="96" y2="60" stroke="white" stroke-width="4"></line>
+
+    <circle cx="96" cy="63" r="3" fill="white"></circle>
+
+    <!-- EL Letters -->
+
+    <text x="64" y="92" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="800" fill="white">
+
+        EL
+
+    </text>
+
+</svg>
