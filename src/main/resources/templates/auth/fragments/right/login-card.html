@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<section th:fragment="loginCard"
+         class="login-panel">
+
+  <div class="login-container">
+
+    <div class="login-card">
+
+      <!-- Header -->
+      <div th:replace="~{auth/fragments/right/login-header :: loginHeader}"></div>
+
+      <!-- Login Form -->
+      <div th:replace="~{auth/fragments/right/login-form :: loginForm}"></div>
+
+      <!-- Remember Me + Forgot Password -->
+      <div th:replace="~{auth/fragments/right/login-options :: loginOptions}"></div>
+
+      <!-- Security Card -->
+      <div th:replace="~{auth/fragments/right/security-card :: securityCard}"></div>
+
+    </div>
+
+    <!-- Footer -->
+    <div th:replace="~{auth/fragments/right/footer :: footer}"></div>
+
+  </div>
+
+</section>
+
+</body>
+</html>

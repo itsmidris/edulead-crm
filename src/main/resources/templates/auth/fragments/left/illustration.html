@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<section th:fragment="illustration"
+         class="illustration-section">
+
+    <!-- Floating Statistics -->
+    <div class="floating-card floating-card-1">
+
+        <i class="fa-solid fa-user-plus"></i>
+
+        <div>
+
+            <h6>1,245</h6>
+
+            <span>New Leads</span>
+
+        </div>
+
+    </div>
+
+    <!-- Dashboard Illustration -->
+    <div class="illustration-wrapper">
+
+        <img th:src="@{/images/login-illustration.svg}"
+             alt="EduLead CRM Dashboard">
+
+    </div>
+
+    <!-- Floating Statistics -->
+    <div class="floating-card floating-card-2">
+
+        <i class="fa-solid fa-chart-line"></i>
+
+        <div>
+
+            <h6>86%</h6>
+
+            <span>Conversion</span>
+
+        </div>
+
+    </div>
+
+</section>
+
+</body>
+</html>

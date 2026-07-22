@@ -1,0 +1,300 @@
+/* ==========================================
+   Feature Grid
+========================================== */
+
+.feature-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 1.5rem;
+
+    margin: 4rem 0;
+
+}
+
+
+/* ==========================================
+   Feature Card
+========================================== */
+
+.feature-card {
+
+    background: rgba(255,255,255,.12);
+
+    backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255,255,255,.18);
+
+    border-radius: 22px;
+
+    padding: 1.5rem;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 1rem;
+
+    transition: .35s ease;
+
+    cursor: pointer;
+
+}
+
+.feature-card:hover {
+
+    transform: translateY(-8px);
+
+    background: rgba(255,255,255,.18);
+
+    box-shadow: 0 20px 40px rgba(0,0,0,.15);
+
+}
+
+
+/* ==========================================
+   Feature Icon
+========================================== */
+
+.feature-icon {
+
+    width: 56px;
+
+    height: 56px;
+
+    border-radius: 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: #fff;
+
+    font-size: 1.25rem;
+
+    flex-shrink: 0;
+
+}
+
+
+/* Gradient Colors */
+
+.feature-icon.blue {
+
+    background: linear-gradient(135deg,#2563eb,#60a5fa);
+
+}
+
+.feature-icon.green {
+
+    background: linear-gradient(135deg,#10b981,#34d399);
+
+}
+
+.feature-icon.orange {
+
+    background: linear-gradient(135deg,#f59e0b,#fbbf24);
+
+}
+
+.feature-icon.purple {
+
+    background: linear-gradient(135deg,#8b5cf6,#a78bfa);
+
+}
+
+
+/* ==========================================
+   Feature Content
+========================================== */
+
+.feature-content {
+
+    flex: 1;
+
+}
+
+.feature-content h5 {
+
+    color: #fff;
+
+    font-size: 1rem;
+
+    margin-bottom: .45rem;
+
+    font-weight: 700;
+
+}
+
+.feature-content p {
+
+    color: rgba(255,255,255,.82);
+
+    font-size: .92rem;
+
+    line-height: 1.5;
+
+    margin: 0;
+
+}
+
+
+/* ==========================================
+   Arrow
+========================================== */
+
+.feature-arrow {
+
+    color: rgba(255,255,255,.75);
+
+    transition: .3s ease;
+
+}
+
+.feature-card:hover .feature-arrow {
+
+    transform: translateX(6px);
+
+    color: #fff;
+
+}
+
+
+/* ==========================================
+   Trust Section
+========================================== */
+
+.trust-section {
+
+    margin-top: 4rem;
+
+}
+
+
+/* ==========================================
+   Trust Card
+========================================== */
+
+.trust-card {
+
+    background: rgba(255,255,255,.15);
+
+    backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255,255,255,.20);
+
+    border-radius: 26px;
+
+    padding: 2rem;
+
+}
+
+
+/* ==========================================
+   Trust Header
+========================================== */
+
+.trust-header {
+
+    display: flex;
+
+    gap: 1rem;
+
+    align-items: center;
+
+    margin-bottom: 1.75rem;
+
+}
+
+.trust-icon {
+
+    width: 60px;
+
+    height: 60px;
+
+    border-radius: 18px;
+
+    background: rgba(255,255,255,.18);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: #fff;
+
+    font-size: 1.4rem;
+
+}
+
+.trust-header h5 {
+
+    color: #fff;
+
+    margin-bottom: .3rem;
+
+    font-weight: 700;
+
+}
+
+.trust-header p {
+
+    margin: 0;
+
+    color: rgba(255,255,255,.82);
+
+}
+
+
+/* ==========================================
+   Trust Features
+========================================== */
+
+.trust-features {
+
+    display: grid;
+
+    grid-template-columns: repeat(2,1fr);
+
+    gap: 1rem;
+
+}
+
+.trust-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: .8rem;
+
+    color: #fff;
+
+    font-size: .95rem;
+
+}
+
+.trust-item i {
+
+    width: 34px;
+
+    height: 34px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.18);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: #7dd3fc;
+
+}

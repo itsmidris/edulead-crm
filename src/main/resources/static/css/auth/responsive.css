@@ -1,0 +1,228 @@
+/* ==========================================
+   Large Desktop (1400px+)
+========================================== */
+
+@media (min-width: 1400px) {
+
+    .left-scroll {
+
+        padding: 4rem 5rem;
+
+    }
+
+    .hero-title {
+
+        font-size: 4rem;
+
+    }
+
+}
+
+
+/* ==========================================
+   Laptop
+========================================== */
+
+@media (max-width: 1200px) {
+
+    .hero-title {
+
+        font-size: 3rem;
+
+    }
+
+    .floating-card {
+
+        display: none;
+
+    }
+
+}
+
+
+/* ==========================================
+   Tablet
+========================================== */
+
+@media (max-width: 992px) {
+
+    .auth-layout {
+
+        flex-direction: column;
+
+    }
+
+    .left-panel,
+    .login-panel {
+
+        min-height: auto;
+
+    }
+
+    .login-panel {
+
+        position: relative;
+
+        padding: 3rem 1.5rem;
+
+    }
+
+    .left-scroll {
+
+        height: auto;
+
+        overflow: visible;
+
+        padding: 3rem 2rem;
+
+    }
+
+    .feature-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .trust-features {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+
+/* ==========================================
+   Mobile
+========================================== */
+
+@media (max-width: 768px) {
+
+    .branding {
+
+        justify-content: center;
+
+        text-align: center;
+
+        flex-direction: column;
+
+    }
+
+    .hero-section {
+
+        text-align: center;
+
+    }
+
+    .hero-title {
+
+        font-size: 2.4rem;
+
+    }
+
+    .hero-divider {
+
+        margin-inline: auto;
+
+    }
+
+    .hero-description {
+
+        margin: auto;
+
+    }
+
+    .illustration {
+
+        margin: 3rem 0;
+
+    }
+
+    .login-card {
+
+        padding: 2rem;
+
+    }
+
+    .options-top {
+
+        flex-direction: column;
+
+        gap: 1rem;
+
+        align-items: flex-start;
+
+    }
+
+}
+
+
+/* ==========================================
+   Small Mobile
+========================================== */
+
+@media (max-width: 576px) {
+
+    .left-scroll {
+
+        padding: 2rem 1.25rem;
+
+    }
+
+    .hero-title {
+
+        font-size: 2rem;
+
+    }
+
+    .hero-description {
+
+        font-size: .95rem;
+
+    }
+
+    .brand-logo img {
+
+        width: 58px;
+
+        height: 58px;
+
+    }
+
+    .brand-info h1 {
+
+        font-size: 1.5rem;
+
+    }
+
+    .feature-card {
+
+        padding: 1.25rem;
+
+    }
+
+    .login-card {
+
+        padding: 1.5rem;
+
+        border-radius: 20px;
+
+    }
+
+    .login-btn {
+
+        height: 52px;
+
+    }
+
+    .security-header {
+
+        flex-direction: column;
+
+        text-align: center;
+
+        align-items: center;
+
+    }
+
+}

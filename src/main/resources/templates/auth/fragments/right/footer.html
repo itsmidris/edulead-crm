@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<div th:fragment="footer"
+     class="login-footer">
+
+    <p class="mb-1">
+
+        &copy; <span th:text="${#dates.year(#dates.createNow())}">2026</span>
+        EduLead CRM. All Rights Reserved.
+
+    </p>
+
+    <small>
+
+        Version 1.0.0 • Built with Spring Boot & Thymeleaf
+
+    </small>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<form th:fragment="loginForm"
+      class="login-form"
+      method="post"
+      th:action="@{/login}">
+
+    <!-- Email -->
+
+    <div class="form-group">
+
+        <label for="username"
+               class="form-label">
+
+            Email Address
+
+        </label>
+
+        <div class="input-wrapper">
+
+            <span class="input-icon">
+
+                <i class="fa-regular fa-envelope"></i>
+
+            </span>
+
+            <input
+                    type="email"
+                    id="username"
+                    name="username"
+                    class="form-control"
+                    placeholder="Enter your email address"
+                    autocomplete="username"
+                    required>
+
+        </div>
+
+    </div>
+
+
+    <!-- Password -->
+
+    <div class="form-group">
+
+        <label for="password"
+               class="form-label">
+
+            Password
+
+        </label>
+
+        <div class="input-wrapper">
+
+            <span class="input-icon">
+
+                <i class="fa-solid fa-lock"></i>
+
+            </span>
+
+            <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    class="form-control"
+                    placeholder="Enter your password"
+                    autocomplete="current-password"
+                    required>
+
+            <button
+                    type="button"
+                    class="password-toggle"
+                    id="togglePassword"
+                    aria-label="Show Password">
+
+                <i class="fa-regular fa-eye"></i>
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- Submit -->
+
+    <button
+            type="submit"
+            class="login-btn">
+
+        <i class="fa-solid fa-arrow-right-to-bracket"></i>
+
+        <span>
+
+            Sign In Securely
+
+        </span>
+
+    </button>
+
+</form>
+
+</body>
+</html>

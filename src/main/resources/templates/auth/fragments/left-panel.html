@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<div th:fragment="leftPanel" class="left-panel">
+
+  <!-- Animated Background -->
+  <div th:replace="~{auth/fragments/left/background :: background}"></div>
+
+  <!-- Scrollable Content -->
+  <div class="left-scroll">
+
+    <!-- Brand -->
+    <div th:replace="~{auth/fragments/left/branding :: branding}"></div>
+
+    <!-- Hero -->
+    <div th:replace="~{auth/fragments/left/hero :: hero}"></div>
+
+    <!-- Illustration -->
+    <div th:replace="~{auth/fragments/left/illustration :: illustration}"></div>
+
+    <!-- Features -->
+    <div th:replace="~{auth/fragments/left/features :: features}"></div>
+
+    <!-- Trust -->
+    <div th:replace="~{auth/fragments/left/trust :: trust}"></div>
+
+  </div>
+
+</div>
+
+</body>
+</html>

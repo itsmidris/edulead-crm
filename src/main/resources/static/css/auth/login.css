@@ -1,0 +1,414 @@
+/* ==========================================
+   Login Header
+========================================== */
+
+.login-header {
+
+    text-align: center;
+
+    margin-bottom: 2.5rem;
+
+}
+
+.login-badge {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: .6rem;
+
+    padding: .55rem 1rem;
+
+    border-radius: 999px;
+
+    background: #eef4ff;
+
+    color: var(--primary);
+
+    font-size: .9rem;
+
+    font-weight: 600;
+
+    margin-bottom: 1.25rem;
+
+}
+
+.login-title {
+
+    font-size: 2rem;
+
+    font-weight: 800;
+
+    color: var(--text-dark);
+
+    margin-bottom: .75rem;
+
+}
+
+.login-subtitle {
+
+    color: var(--text-light);
+
+    margin: 0;
+
+}
+
+
+/* ==========================================
+   Form
+========================================== */
+
+.login-form {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 1.5rem;
+
+}
+
+.form-group {
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+.form-label {
+
+    font-weight: 600;
+
+    margin-bottom: .6rem;
+
+    color: var(--text-dark);
+
+}
+
+
+/* ==========================================
+   Inputs
+========================================== */
+
+.input-wrapper {
+
+    position: relative;
+
+}
+
+.input-icon {
+
+    position: absolute;
+
+    left: 18px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: #94a3b8;
+
+}
+
+.form-control {
+
+    height: 56px;
+
+    border-radius: 16px;
+
+    border: 1px solid var(--border);
+
+    padding-left: 48px;
+
+    padding-right: 52px;
+
+    transition: .3s;
+
+    box-shadow: none;
+
+}
+
+.form-control:focus {
+
+    border-color: var(--primary);
+
+    box-shadow: 0 0 0 .25rem rgba(37,99,235,.12);
+
+}
+
+
+/* ==========================================
+   Password Button
+========================================== */
+
+.password-toggle {
+
+    position: absolute;
+
+    right: 15px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    background: transparent;
+
+    color: #64748b;
+
+    cursor: pointer;
+
+}
+
+.password-toggle:hover {
+
+    color: var(--primary);
+
+}
+
+
+/* ==========================================
+   Login Button
+========================================== */
+
+.login-btn {
+
+    height: 58px;
+
+    border-radius: 18px;
+
+    background: linear-gradient(
+            135deg,
+            var(--primary),
+            var(--primary-light)
+    );
+
+    color: white;
+
+    font-weight: 700;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: .8rem;
+
+    transition: .35s;
+
+    margin-top: .5rem;
+
+}
+
+.login-btn:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 18px 35px rgba(37,99,235,.28);
+
+}
+
+
+/* ==========================================
+   Login Options
+========================================== */
+
+.login-options {
+
+    margin-top: 2rem;
+
+}
+
+.options-top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+.forgot-password {
+
+    color: var(--primary);
+
+    font-weight: 600;
+
+}
+
+.forgot-password:hover {
+
+    color: var(--primary-dark);
+
+}
+
+
+/* Divider */
+
+.login-divider {
+
+    margin: 1.8rem 0;
+
+}
+
+.login-divider span {
+
+    display: block;
+
+    height: 1px;
+
+    background: var(--border);
+
+}
+
+
+/* Bottom */
+
+.options-bottom {
+
+    text-align: center;
+
+}
+
+.options-bottom small {
+
+    display: block;
+
+    color: var(--text-light);
+
+    margin-bottom: .5rem;
+
+}
+
+.options-bottom a {
+
+    color: var(--primary);
+
+    font-weight: 700;
+
+}
+
+
+/* ==========================================
+   Security Card
+========================================== */
+
+.security-card {
+
+    margin-top: 2rem;
+
+    padding: 1.5rem;
+
+    background: var(--bg-soft);
+
+    border-radius: 20px;
+
+}
+
+.security-header {
+
+    display: flex;
+
+    gap: 1rem;
+
+    margin-bottom: 1.25rem;
+
+}
+
+.security-icon {
+
+    width: 52px;
+
+    height: 52px;
+
+    border-radius: 14px;
+
+    background: var(--primary);
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+}
+
+.security-header h5 {
+
+    margin-bottom: .3rem;
+
+    font-weight: 700;
+
+}
+
+.security-header p {
+
+    margin: 0;
+
+    color: var(--text-light);
+
+    font-size: .92rem;
+
+}
+
+.security-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: .75rem;
+
+    margin-bottom: .85rem;
+
+    color: var(--text-body);
+
+}
+
+.security-item:last-child {
+
+    margin-bottom: 0;
+
+}
+
+.security-item i {
+
+    color: var(--success);
+
+}
+
+
+/* ==========================================
+   Footer
+========================================== */
+
+.login-footer {
+
+    text-align: center;
+
+    margin-top: 2rem;
+
+}
+
+.login-footer p {
+
+    margin-bottom: .35rem;
+
+    font-weight: 600;
+
+    color: var(--text-body);
+
+}
+
+.login-footer small {
+
+    color: var(--text-light);
+
+}

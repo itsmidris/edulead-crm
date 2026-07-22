@@ -1,0 +1,256 @@
+/* ==========================================
+   Branding
+========================================== */
+
+.branding {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 1rem;
+
+    margin-bottom: 4rem;
+
+}
+
+.brand-logo img {
+
+    width: 70px;
+
+    height: 70px;
+
+}
+
+.brand-info h1 {
+
+    color: #fff;
+
+    font-size: 1.8rem;
+
+    font-weight: 700;
+
+    margin-bottom: .2rem;
+
+}
+
+.brand-info p {
+
+    color: rgba(255,255,255,.8);
+
+    margin: 0;
+
+    font-size: .95rem;
+
+}
+
+
+/* ==========================================
+   Hero Section
+========================================== */
+
+.hero-section {
+
+    margin-bottom: 4rem;
+
+}
+
+.hero-badge {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: .6rem;
+
+    padding: .65rem 1.2rem;
+
+    border-radius: 999px;
+
+    background: rgba(255,255,255,.15);
+
+    color: #fff;
+
+    backdrop-filter: blur(14px);
+
+    margin-bottom: 1.8rem;
+
+    font-size: .9rem;
+
+    font-weight: 600;
+
+}
+
+.hero-badge i {
+
+    color: #ffd54f;
+
+}
+
+.hero-title {
+
+    color: #fff;
+
+    font-size: 3.5rem;
+
+    font-weight: 800;
+
+    line-height: 1.1;
+
+    margin-bottom: 1.5rem;
+
+}
+
+.hero-title span {
+
+    color: #dbeafe;
+
+}
+
+.hero-divider {
+
+    width: 90px;
+
+    height: 5px;
+
+    border-radius: 999px;
+
+    background: rgba(255,255,255,.7);
+
+    margin-bottom: 2rem;
+
+}
+
+.hero-description {
+
+    color: rgba(255,255,255,.9);
+
+    font-size: 1.08rem;
+
+    max-width: 600px;
+
+    line-height: 1.8;
+
+}
+
+
+/* ==========================================
+   Illustration
+========================================== */
+
+.illustration {
+
+    position: relative;
+
+    margin: 4rem 0;
+
+}
+
+.illustration-wrapper {
+
+    background: rgba(255,255,255,.12);
+
+    backdrop-filter: blur(20px);
+
+    border-radius: 28px;
+
+    padding: 2rem;
+
+    border: 1px solid rgba(255,255,255,.25);
+
+}
+
+.illustration-wrapper img {
+
+    width: 100%;
+
+}
+
+
+/* ==========================================
+   Floating Cards
+========================================== */
+
+.floating-card {
+
+    position: absolute;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: .9rem;
+
+    background: rgba(255,255,255,.18);
+
+    backdrop-filter: blur(20px);
+
+    color: #fff;
+
+    padding: 1rem 1.25rem;
+
+    border-radius: 18px;
+
+    box-shadow: 0 12px 35px rgba(0,0,0,.15);
+
+    border: 1px solid rgba(255,255,255,.2);
+
+}
+
+.floating-card i {
+
+    width: 42px;
+
+    height: 42px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: rgba(255,255,255,.2);
+
+    font-size: 1rem;
+
+}
+
+.floating-card strong {
+
+    display: block;
+
+    font-size: 1rem;
+
+}
+
+.floating-card small {
+
+    display: block;
+
+    color: rgba(255,255,255,.85);
+
+}
+
+
+/* Top Card */
+
+.card-top {
+
+    top: -25px;
+
+    left: -35px;
+
+}
+
+
+/* Bottom Card */
+
+.card-bottom {
+
+    bottom: -25px;
+
+    right: -35px;
+
+}
