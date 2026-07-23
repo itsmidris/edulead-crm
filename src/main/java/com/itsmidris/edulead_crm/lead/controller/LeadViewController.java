@@ -112,6 +112,14 @@ public class LeadViewController {
         return "redirect:/leads?updated";
     }
 
+    @PostMapping("/deactivate/{id}")
+    public String deactivateLead(@PathVariable Long id) {
+
+        leadService.deactivateLead(id);
+
+        return "redirect:/leads?deleted";
+    }
+
     private void loadFormData(Model model) {
 
         model.addAttribute("courses", courseService.getAllCourses());

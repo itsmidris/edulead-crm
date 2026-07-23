@@ -35,31 +35,34 @@
             <div class="alert alert-success alert-dismissible fade show"
                  role="alert"
                  th:if="${param.success}">
-
                 <i class="bi bi-check-circle-fill"></i>
-
                 Lead created successfully.
-
                 <button type="button"
                         class="btn-close"
                         data-bs-dismiss="alert">
                 </button>
-
             </div>
 
             <div class="alert alert-success alert-dismissible fade show"
                  role="alert"
                  th:if="${param.updated}">
-
                 <i class="bi bi-check-circle-fill"></i>
-
                 Lead updated successfully.
-
                 <button type="button"
                         class="btn-close"
                         data-bs-dismiss="alert">
                 </button>
+            </div>
 
+            <div class="alert alert-warning alert-dismissible fade show"
+                 role="alert"
+                 th:if="${param.deleted}">
+                <i class="bi bi-trash"></i>
+                Lead deactivated successfully.
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="alert">
+                </button>
             </div>
 
             <a th:href="@{/leads/add}" class="btn btn-primary"> <i class="bi bi-plus-circle"></i>
@@ -170,11 +173,15 @@
                         <i class="bi bi-eye"></i>
                     </a>
 
-                    <button class="btn btn-sm btn-danger" title="Deactivate Lead">
-
-                        <i class="bi bi-trash"></i>
-
-                    </button>
+                    <form th:action="@{/leads/deactivate/{id}(id=${lead.id})}"
+                          method="post"
+                          class="d-inline"
+                          onsubmit="return confirm('Are you sure you want to deactivate this lead?');">
+                        <button class="btn btn-sm btn-danger"
+                                title="Deactivate Lead">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </form>
 
                 </td>
 
