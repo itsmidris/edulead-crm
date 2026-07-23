@@ -18,6 +18,8 @@ public interface CourseMapper {
     @Mapping(target = "active", constant = "true")
     Course toEntity(CreateCourseRequest request);
 
+    @Mapping(target = "createdAt", source = "createdAt")
+    @Mapping(target = "updatedAt", source = "updatedAt")
     CourseResponse toResponse(Course course);
 
     CourseSummaryResponse toSummaryResponse(Course course);

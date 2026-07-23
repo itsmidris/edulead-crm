@@ -53,6 +53,20 @@
 
             </div>
 
+            <div class="alert alert-warning alert-dismissible fade show"
+                 th:if="${param.deleted}"
+                 role="alert">
+
+                <i class="bi bi-trash"></i>
+
+                Course deactivated successfully.
+
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="alert"></button>
+
+            </div>
+
             <a th:href="@{/courses/add}" class="btn btn-primary"> <i class="bi bi-plus-circle"></i>
                 Add Course
             </a>
@@ -101,12 +115,17 @@
                     <a th:href="@{/courses/edit/{id}(id=${course.id})}" class="btn btn-warning btn-sm">
                         <i class="bi bi-pencil-square"></i>
                     </a>
-                    <a th:href="@{/courses/{id}(id=${course.id})}" class="btn btn-info btn-sm">
+                    <a th:href="@{/courses/{id}(id=${course.id})}" class="btn btn-sm btn-info" title="View Course">
                         <i class="bi bi-eye"></i>
                     </a>
-                    <button class="btn btn-danger btn-sm">
-                        <i class="bi bi-trash"></i>
-                    </button>
+                    <form th:action="@{/courses/deactivate/{id}(id=${course.id})}"
+                          method="post"
+                          class="d-inline"
+                          onsubmit="return confirm('Deactivate this course?');">
+                        <button class="btn btn-sm btn-danger">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </form>
                 </td>
             </tr>
             </tbody>

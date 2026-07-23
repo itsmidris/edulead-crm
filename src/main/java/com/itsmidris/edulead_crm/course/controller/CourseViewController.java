@@ -65,4 +65,17 @@ public class CourseViewController {
         courseService.updateCourse(id, request);
         return "redirect:/courses?updated";
     }
+
+    @GetMapping("/{id}")
+    public String viewCourse(@PathVariable Long id, Model model) {
+        model.addAttribute("course", courseService.getCourseById(id));
+        model.addAttribute("activeMenu", "course");
+        return "course/view";
+    }
+
+    @PostMapping("/deactivate/{id}")
+    public String deactivateCourse(@PathVariable Long id) {
+        courseService.disableCourse(id);
+        return "redirect:/courses?deleted";
+    }
 }
