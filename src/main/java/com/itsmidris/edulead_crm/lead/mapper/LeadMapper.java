@@ -26,6 +26,8 @@ public interface LeadMapper {
     @Mapping(target = "courseName", source = "course.courseName")
     @Mapping(target = "assignedCaller",
             expression = "java(lead.getAssignedCaller() != null ? lead.getAssignedCaller().getFirstName() + \" \" + lead.getAssignedCaller().getLastName() : null)")
+    @Mapping(target = "createdAt", source = "createdAt")
+    @Mapping(target = "updatedAt", source = "updatedAt")
     LeadResponse toResponse(Lead lead);
 
     @Mapping(target = "fullName",

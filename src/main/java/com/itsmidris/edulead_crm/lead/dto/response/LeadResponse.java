@@ -1,6 +1,7 @@
 package com.itsmidris.edulead_crm.lead.dto.response;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import com.itsmidris.edulead_crm.common.enums.LeadCreationMethod;
 import com.itsmidris.edulead_crm.common.enums.LeadSource;
@@ -13,6 +14,10 @@ import lombok.Setter;
 @Getter
 @Setter
 public class LeadResponse {
+
+    private LocalDateTime createdAt;
+
+    private LocalDateTime updatedAt;
 
     private Long id;
 
