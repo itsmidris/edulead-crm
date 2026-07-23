@@ -23,4 +23,6 @@ public interface CourseService {
 
     CourseResponse updateCourse(Long id, UpdateCourseRequest request);
 
+    List<CourseResponse> searchCourses(String keyword, Boolean active);
+
 }

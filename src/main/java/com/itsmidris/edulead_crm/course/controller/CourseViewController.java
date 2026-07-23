@@ -20,8 +20,11 @@ public class CourseViewController {
     }
 
     @GetMapping
-    public String listCourses(Model model) {
-        model.addAttribute("courses", courseService.getAllCourses());
+    public String listCourses(@RequestParam(required = false) String keyword,
+                              @RequestParam(required = false) Boolean active, Model model) {
+        model.addAttribute("courses", courseService.searchCourses(keyword, active));
+        model.addAttribute("keyword", keyword);
+        model.addAttribute("selectedStatus", active);
         model.addAttribute("activeMenu", "course");
         return "course/list";
     }

@@ -73,21 +73,30 @@
 
         </div>
 
-        <div class="row mb-3">
-
-            <div class="col-md-4">
-                <input type="text" class="form-control" placeholder="Search courses...">
+        <form th:action="@{/courses}" method="get" class="row g-2 mb-3 align-items-center">
+            <div class="col-md-6">
+                <input type="text"
+                       class="form-control"
+                       name="keyword"
+                       placeholder="Search courses..."
+                       th:value="${keyword}">
             </div>
-
             <div class="col-md-3">
-                <select class="form-select">
-                    <option>All Status</option>
-                    <option>Active</option>
-                    <option>Inactive</option>
+                <select class="form-select" name="active">
+                    <option value="">All Status</option>
+                    <option value="true" th:selected="${selectedStatus == true}">Active</option>
+                    <option value="false" th:selected="${selectedStatus == false}">Inactive</option>
                 </select>
             </div>
-
-        </div>
+            <div class="col-md-1 d-grid">
+                <button class="btn btn-primary">Search</button>
+            </div>
+            <div class="col-md-1 d-grid">
+                <a th:href="@{/courses}" class="btn btn-outline-secondary">
+                    Reset
+                </a>
+            </div>
+        </form>
 
         <table class="table table-hover table-striped align-middle shadow-sm">
             <thead class="table-dark">

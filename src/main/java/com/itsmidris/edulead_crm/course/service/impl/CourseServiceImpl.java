@@ -81,4 +81,22 @@ public class CourseServiceImpl implements CourseService {
         Course updatedCourse = courseRepository.save(course);
         return courseMapper.toResponse(updatedCourse);
     }
+
+    @Override
+    public List<CourseResponse> searchCourses(String keyword, Boolean active) {
+        keyword = (keyword == null || keyword.isBlank())
+                ? null
+                : keyword.trim();
+        List<Course> courses;
+        if (keyword == null && active == null) {
+            courses = courseRepository.findAll();
+        } else if (keyword != null && active == null) {
+            courses = courseRepository.findByCourseNameContainingIgnoreCase(keyword);
+        } else if (keyword == null) {
+            courses = courseRepository.findByActive(active);
+        } else {
+            courses = courseRepository.findByCourseNameContainingIgnoreCaseAndActive(keyword, active);
+        }
+        return courses.stream().map(courseMapper::toResponse).toList();
+    }
 }
