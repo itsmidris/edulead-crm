@@ -71,36 +71,31 @@
 
         <div class="row mb-3">
 
-            <div class="col-md-4">
-
-                <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Search leads...">
-
-            </div>
-
-            <div class="col-md-3">
-
-                <select class="form-select">
-
-                    <option>All Status</option>
-
-                    <option>NEW</option>
-
-                    <option>CONTACTED</option>
-
-                    <option>FOLLOW_UP</option>
-
-                    <option>COUNSELING_REQUIRED</option>
-
-                    <option>ADMISSION_COMPLETED</option>
-
-                    <option>LOST</option>
-
-                </select>
-
-            </div>
+            <form th:action="@{/leads}" method="get" class="row g-2 mb-3 align-items-center">
+                <div class="col-md-7">
+                    <input type="text"
+                           class="form-control"
+                           name="keyword"
+                           placeholder="Search by Name, Phone, Email or Reference..."
+                           th:value="${keyword}">
+                </div>
+                <div class="col-md-3">
+                    <select class="form-select" name="status">
+                        <option value="">All Status</option>
+                        <option th:each="status : ${statuses}"
+                                th:value="${status}"
+                                th:text="${status}"
+                                th:selected="${selectedStatus == status}">
+                        </option>
+                    </select>
+                </div>
+                <div class="col-md-1 d-grid">
+                    <button class="btn btn-primary">Search</button>
+                </div>
+                <div class="col-md-1 d-grid">
+                    <a th:href="@{/leads}" class="btn btn-outline-secondary">Reset</a>
+                </div>
+            </form>
 
         </div>
 

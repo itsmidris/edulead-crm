@@ -2,6 +2,7 @@ package com.itsmidris.edulead_crm.lead.controller;
 
 import com.itsmidris.edulead_crm.common.enums.LeadCreationMethod;
 import com.itsmidris.edulead_crm.common.enums.LeadSource;
+import com.itsmidris.edulead_crm.common.enums.LeadStatus;
 import com.itsmidris.edulead_crm.common.enums.LeadType;
 import com.itsmidris.edulead_crm.course.service.CourseService;
 import com.itsmidris.edulead_crm.lead.dto.request.CreateLeadRequest;
@@ -29,9 +30,15 @@ public class LeadViewController {
     }
 
     @GetMapping
-    public String listLeads(Model model) {
+    public String listLeads(
+            @RequestParam(required = false) String keyword,
+            @RequestParam(required = false) LeadStatus status,
+            Model model) {
 
-        model.addAttribute("leads", leadService.getAllLeads());
+        model.addAttribute("leads", leadService.searchLeads(keyword, status));
+        model.addAttribute("keyword", keyword);
+        model.addAttribute("selectedStatus", status);
+        model.addAttribute("statuses", LeadStatus.values());
         model.addAttribute("activeMenu", "lead");
 
         return "lead/list";

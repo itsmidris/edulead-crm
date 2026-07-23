@@ -140,4 +140,12 @@ public class LeadServiceImpl implements LeadService {
         return leadMapper.toUpdateRequest(lead);
     }
 
+    @Override
+    public List<LeadResponse> searchLeads(String keyword, LeadStatus status) {
+        return leadRepository.searchActiveLeads(keyword, status)
+                .stream()
+                .map(leadMapper::toResponse)
+                .toList();
+    }
+
 }
