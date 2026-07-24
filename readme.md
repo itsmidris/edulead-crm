@@ -3,6 +3,27 @@
 A modern **Student Admission & Lead Management CRM** built using **Spring Boot** and **Thymeleaf** for educational institutes to efficiently manage student inquiries, follow-ups, counseling sessions, admissions, and user management.
 
 ---
+## 🌐 Live Demo
+
+The application is deployed and available online.
+
+**🔗 Live URL:**  
+https://edulead-crm.onrender.com/
+
+---
+
+## 🔑 Demo Login Credentials
+
+Use the following credentials to explore the application:
+
+| Role | Email / Username | Password |
+|------|------------------|----------|
+| Administrator | demo@gmail.com | Demo@123 |
+
+> **Note:** This is a demo environment. Data may be reset or modified periodically.
+
+
+---
 
 ## 🚀 Technical Highlights
 
