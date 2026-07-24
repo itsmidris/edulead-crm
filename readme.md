@@ -246,31 +246,44 @@ http://localhost:8080
 
 ## 🔐 Login
 
-![Login](docs/login.png)
+![Login](docs/Login.png)
 
 ## 🏠 Dashboard
 
-![Dashboard](docs/dashboard.png)
+![Dashboard](docs/Dashboard.png)
 
 ## 👥 Lead Management
 
-![Lead List](docs/lead-list.png)
+![Lead List](docs/Lead-List.png)
 
-![Add Lead](docs/add-lead.png)
+![Add Lead](docs/Add-Lead-1.png)
 
-![Add Lead Form](docs/add-lead-form.png)
+![Add Lead](docs/Add-Lead-2.png)
 
 ## 📚 Course Management
 
-![Course List](docs/course-list.png)
+![Course List](docs/Course-List.png)
+
+![Create Course](docs/Create-Course.png)
 
 ## 📅 Follow-up Management
 
-![Follow-up List](docs/followup-list.png)
+![Follow-up List](docs/FollowUp-list.png)
+
+![Create Follow-up](docs/Create-Followup.png)
 
 ## 📞 Call Log Management
 
-![Call Logs](docs/call-logs.png)
+![Call Logs](docs/Call-Logs.png)
+![All Call Logs](docs/All-Calls.png)
+![Caller History](docs/Caller-History.png)
+![Caller History Result](docs/Caller-History-Result.png)
+![Lead History](docs/Lead-History.png)
+![Lead History](docs/Lead-History-Result.png)
+![Filter By Outcome](docs/Filter-By-Outcome.png)
+![Filter By Outcome](docs/Filter-By-Outcome-Result.png)
+![Fiter By Date Range](docs/Filter-By-Date-Range.png)
+![Fiter By Date Range](docs/Filter-By-Date-Range-Result.png)
 
 ---
 
