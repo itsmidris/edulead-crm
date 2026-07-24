@@ -322,8 +322,8 @@ Contributions, suggestions, and improvements are welcome.
 
 **Md Imran Idrishi**
 
-GitHub: https://github.com/itsmidris
-LinkedIn: https://linkedin.com/in/itsmidris
+1. GitHub: https://github.com/itsmidris
+2. LinkedIn: https://linkedin.com/in/itsmidris
 
 ---
 
