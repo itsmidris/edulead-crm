@@ -268,7 +268,7 @@ http://localhost:8080
 
 ## 📅 Follow-up Management
 
-![Follow-up List](docs/FollowUp-list.png)
+![Follow-up List](docs/FollowUp-List.png)
 
 ![Create Follow-up](docs/Create-Followup.png)
 
@@ -323,6 +323,7 @@ Contributions, suggestions, and improvements are welcome.
 **Md Imran Idrishi**
 
 GitHub: https://github.com/itsmidris
+LinkedIn: https://linkedin.com/in/itsmidris
 
 ---
 
