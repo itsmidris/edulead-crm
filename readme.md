@@ -345,6 +345,7 @@ Contributions, suggestions, and improvements are welcome.
 
 1. GitHub: https://github.com/itsmidris
 2. LinkedIn: https://linkedin.com/in/itsmidris
+3. Portfolio: https://itsmidris.github.io/
 
 ---
 
