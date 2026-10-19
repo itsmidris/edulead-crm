@@ -1,0 +1,13 @@
+﻿services:
+  edulead-crm:
+    image: ghcr.io/itsmidris/edulead-crm:latest
+    container_name: edulead-crm
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "127.0.0.1:8080:8080"
+    mem_limit: 600m
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      JAVA_TOOL_OPTIONS: "-XX:MaxRAMPercentage=50.0"
