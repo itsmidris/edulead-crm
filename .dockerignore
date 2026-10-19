@@ -3,3 +3,10 @@ target
 .git
 .gitignore
 README.md
+# Local configuration backups
+*.properties.bak
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
